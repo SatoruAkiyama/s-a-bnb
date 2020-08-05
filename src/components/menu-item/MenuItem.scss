@@ -1,0 +1,42 @@
+@import "../../_variable";
+
+.copy-right {
+  text-align: right;
+  font-size: 20px;
+  margin-top: 30px;
+  a {
+    color: $cGray;
+    transition: all 0.3s;
+    font-weight: 300;
+
+    &:hover {
+      color: $cWhite;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+.menu-item a {
+  transition: all 0.3s;
+
+  &:hover {
+    color: $cGray;
+  }
+  &.active {
+    color: $cGray;
+    cursor: default;
+
+    &::after {
+      content: "";
+      border-bottom: none;
+      display: none;
+    }
+    &:hover::after {
+      width: 0%;
+      border-bottom: none;
+    }
+  }
+}
