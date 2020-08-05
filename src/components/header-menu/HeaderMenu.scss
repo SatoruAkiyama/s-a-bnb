@@ -1,3 +1,4 @@
+@import "../../variable";
 .header-menu {
   ul {
     display: flex;
@@ -6,6 +7,10 @@
     & li {
       &:not(:first-child) {
         margin-left: 20px;
+      }
+
+      & a:hover {
+        color: $cBlue;
       }
     }
   }
