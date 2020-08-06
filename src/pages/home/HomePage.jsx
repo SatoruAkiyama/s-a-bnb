@@ -21,25 +21,33 @@ const HomePage = () => {
     getRecommendedCities();
   }, []);
 
-  const recCities = <Cities cities={cities} />;
-
   if (cities.length === 0) {
     return <Spinner />;
   }
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="home-page col s12">
-          <div className="upper-fold">
-            <div className="container">
-              <h1 className="right">Find Your World.</h1>
-              <SearchBox />
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="home-page col s12">
+            <div className="upper-fold">
+              <div className="container">
+                <h1 className="right">Find Your World.</h1>
+                <SearchBox />
+              </div>
             </div>
           </div>
-          {recCities}
         </div>
       </div>
-    </div>
+      <div className="container">
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="col s12">
+              <Cities cities={cities} text="Recommended Cities" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

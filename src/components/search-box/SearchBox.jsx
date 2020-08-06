@@ -21,7 +21,9 @@ const SearchBox = () => {
   };
   return (
     <div className="search-box col s12 m4">
-      <h2>Book unique places to stay and things to do.</h2>
+      <h2 className="main-header-text">
+        Book unique places to stay and things to do.
+      </h2>
       <form className="search-box-form">
         <div className="col s12 m12">
           <div className="form-label">Where</div>

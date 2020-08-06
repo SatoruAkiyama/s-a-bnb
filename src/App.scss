@@ -1,9 +1,10 @@
 .app {
   margin-top: 70px;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0.5em;
   position: relative;
@@ -13,9 +14,26 @@
   text-align: right;
 }
 
+.main-header-text {
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+  letter-spacing: normal !important;
+  color: #484848 !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  margin: 0px !important;
+  margin-bottom: 10px !important;
+  padding: 0px !important;
+  font-weight: bold;
+}
+
 @media (min-width: 600px) {
   .container {
     padding: 1em;
+  }
+
+  .main-header-text {
+    font-size: 30px !important;
   }
 }
 

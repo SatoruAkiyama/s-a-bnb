@@ -8,18 +8,6 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
     margin: 0;
   }
-  & h2 {
-    font-size: 20px !important;
-    line-height: 1.2 !important;
-    letter-spacing: normal !important;
-    color: #484848 !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    margin: 0px !important;
-    margin-bottom: 10px !important;
-    padding: 0px !important;
-    font-weight: bold;
-  }
   & .submit-btn {
     text-align: right;
   }
@@ -58,9 +46,6 @@
     &.col.m4 {
       width: 400px !important;
       min-height: 415px;
-    }
-    & h2 {
-      font-size: 30px !important;
     }
   }
 }
