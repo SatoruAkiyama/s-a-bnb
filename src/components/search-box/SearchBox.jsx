@@ -74,7 +74,7 @@ const SearchBox = () => {
           <div className="col m12 submit-btn right">
             <div className="input-field" id="submit-btn">
               <button
-                className="btn-large waves-effect waves-light red accent-2"
+                className="btn-large waves-effect waves-light teal accent-3"
                 type="submit"
                 name="action"
                 style={{ color: `#fff`, width: `180px` }}

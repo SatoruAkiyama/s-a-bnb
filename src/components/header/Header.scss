@@ -34,7 +34,7 @@ $cTogglemenuBg: rgb(7, 7, 7);
 
   &__logo {
     a {
-      color: $cRed;
+      color: $cTeal;
       font-weight: 500;
       font-size: 20px;
     }
@@ -89,7 +89,7 @@ $cTogglemenuBg: rgb(7, 7, 7);
     }
     &.menu-open {
       & > span {
-        background-color: $cRed;
+        background-color: $cTeal;
 
         &:nth-child(1) {
           transition-delay: 70ms;
