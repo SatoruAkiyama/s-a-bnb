@@ -5,6 +5,7 @@ import SearchBox from "../../components/search-box/SearchBox";
 import Spinner from "../../components/spinner/Spinner";
 import Cities from "../../components/cities/Cities";
 import Activities from "../../components/activities/Activities";
+import Venues from "../../components/venues/Venues";
 
 import "./HomePage.scss";
 
@@ -15,15 +16,17 @@ const HomePage = () => {
     asia: {},
     exotic: {},
     activities: [],
+    recVenues: {},
   });
 
-  const { cities, europe, asia, exotic, activities } = allData;
+  const { cities, europe, asia, exotic, activities, recVenues } = allData;
 
   const citiesUrl = `${window.apiHost}/cities/recommended`;
   const europeUrl = `${window.apiHost}/cities/europe`;
   const asiaUrl = `${window.apiHost}/cities/asia`;
   const exoticUrl = `${window.apiHost}/cities/exotic`;
   const activitiesUrl = `${window.apiHost}/activities/today`;
+  const recVenuesUrl = `${window.apiHost}/venues/recommended`;
 
   const promiseArray = [];
 
@@ -32,6 +35,7 @@ const HomePage = () => {
   promiseArray.push(axios.get(asiaUrl));
   promiseArray.push(axios.get(exoticUrl));
   promiseArray.push(axios.get(activitiesUrl));
+  promiseArray.push(axios.get(recVenuesUrl));
 
   useEffect(() => {
     const getData = async () => {
@@ -43,6 +47,7 @@ const HomePage = () => {
           asia: data[2].data,
           exotic: data[3].data,
           activities: data[4].data,
+          recVenues: data[5].data,
         })
       );
     };
@@ -73,6 +78,9 @@ const HomePage = () => {
           <div className="row">
             <div className="col s12">
               <Cities cities={cities} />
+            </div>
+            <div className="cal s12">
+              <Venues venues={recVenues.venues} text={recVenues.header} />
             </div>
             <div className="col s12">
               <Activities activities={activities} text="Activities" />

@@ -7,7 +7,7 @@ const Activities = ({ activities, text }) => {
     <div className="activities">
       <h1 className="main-header-text">{text}</h1>
       {activities.map(({ id, ...otherProps }) => (
-        <div className="col s6 m4 l2" key={id}>
+        <div className="col s6 m4 l2" key={id} style={{ minHeight: `370px` }}>
           <Activity {...otherProps} id={id} />
         </div>
       ))}

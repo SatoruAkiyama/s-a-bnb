@@ -1,0 +1,24 @@
+@import "../../variable";
+
+.venue {
+  margin-bottom: 30px;
+  margin-top: 20px;
+
+  & a {
+    color: #000;
+  }
+
+  & img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  & .location {
+    color: rgb(113, 113, 113) !important;
+  }
+
+  & .material-icons {
+    color: $cRed;
+    font-size: 14px;
+  }
+}
