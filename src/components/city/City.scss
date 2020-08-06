@@ -10,6 +10,8 @@
   text-align: center;
   margin: 0px;
   text-transform: capitalize;
+  border-radius: 25px;
+  overflow: hidden;
 
   & a {
     color: rgb(255, 255, 255);
@@ -19,17 +21,30 @@
     max-width: 100%;
   }
 
-  & .city-name,
-  & .price {
+  &__content {
     position: absolute;
-    bottom: 25px;
-    left: 0px;
-    right: 0px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
-  & .price {
-    bottom: 0px;
-    font-weight: normal;
+  &__price {
+    font-weight: 300;
   }
+
+  // & .city-name,
+  // & .price {
+  //   position: absolute;
+  //   bottom: 25px;
+  //   left: 0px;
+  //   right: 0px;
+  //   padding: 20px;
+  // }
+
+  // & .price {
+  //   bottom: 0px;
+  //   font-weight: normal;
+  // }
 }

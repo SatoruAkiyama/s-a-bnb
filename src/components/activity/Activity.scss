@@ -1,15 +1,28 @@
-.activities {
-  margin-top: 20px;
-}
 .activity {
   margin-bottom: 20px;
-}
 
-.activities .activity img {
-  max-width: 100%;
-  border-radius: 8px;
-}
+  & a {
+    color: #000;
+  }
 
-.material-icons {
-  font-size: 0.75em;
+  & img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  & .material-icons {
+    font-size: 0.75em;
+  }
+
+  &__type {
+    font-weight: 500;
+  }
+
+  &__rating {
+    font-size: 17px;
+  }
+
+  &__cost {
+    font-size: 14px;
+  }
 }

@@ -34,9 +34,12 @@
 }
 
 @media (min-width: 600px) {
+  .home-page .upper-fold {
+    height: 90vh !important;
+  }
   .home-page .upper-fold .container {
     justify-content: space-between;
-    height: 80vh;
+    height: 80vh !important;
 
     & h1 {
       margin-top: 120px;

@@ -4,9 +4,9 @@ import City from "../city/City";
 import Slider from "../slider/Slider";
 
 const Cities = ({ cities, text }) => {
-  const elements = cities.map((city, i) => (
-    <div className="col s3" key={i}>
-      <City city={city} />
+  const elements = cities.map(({ id, ...otherProps }) => (
+    <div className="col s3" key={id}>
+      <City {...otherProps} id={id} />
     </div>
   ));
   return (

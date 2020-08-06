@@ -4,6 +4,7 @@ import axios from "axios";
 import SearchBox from "../../components/search-box/SearchBox";
 import Spinner from "../../components/spinner/Spinner";
 import Cities from "../../components/cities/Cities";
+import Activities from "../../components/activities/Activities";
 
 import "./HomePage.scss";
 
@@ -13,30 +14,35 @@ const HomePage = () => {
     europe: {},
     asia: {},
     exotic: {},
+    activities: [],
   });
 
-  const { cities, europe, asia, exotic } = allData;
+  const { cities, europe, asia, exotic, activities } = allData;
 
   const citiesUrl = `${window.apiHost}/cities/recommended`;
   const europeUrl = `${window.apiHost}/cities/europe`;
   const asiaUrl = `${window.apiHost}/cities/asia`;
   const exoticUrl = `${window.apiHost}/cities/exotic`;
+  const activitiesUrl = `${window.apiHost}/activities/today`;
 
-  const citiesPromise = [];
+  const promiseArray = [];
 
-  citiesPromise.push(axios.get(citiesUrl));
-  citiesPromise.push(axios.get(europeUrl));
-  citiesPromise.push(axios.get(asiaUrl));
-  citiesPromise.push(axios.get(exoticUrl));
+  promiseArray.push(axios.get(citiesUrl));
+  promiseArray.push(axios.get(europeUrl));
+  promiseArray.push(axios.get(asiaUrl));
+  promiseArray.push(axios.get(exoticUrl));
+  promiseArray.push(axios.get(activitiesUrl));
+
   useEffect(() => {
     const getData = async () => {
-      Promise.all(citiesPromise).then((data) =>
+      Promise.all(promiseArray).then((data) =>
         setAllData({
           ...allData,
           cities: data[0].data,
           europe: data[1].data,
           asia: data[2].data,
           exotic: data[3].data,
+          activities: data[4].data,
         })
       );
     };
@@ -45,7 +51,6 @@ const HomePage = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(europe.cities);
   if (cities.length === 0) {
     return <Spinner />;
   }
@@ -67,7 +72,10 @@ const HomePage = () => {
         <div className="container-fluid lower-fold">
           <div className="row">
             <div className="col s12">
-              <Cities cities={cities} text="Recommended Cities" />
+              <Cities cities={cities} />
+            </div>
+            <div className="col s12">
+              <Activities activities={activities} text="Activities" />
             </div>
             <div className="col s12">
               <Cities cities={europe.cities} text={europe.header} />
