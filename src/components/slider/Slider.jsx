@@ -15,6 +15,8 @@ const Slider = ({ elements }) => {
     auto: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
     responsive: [
       {
         breakpoint: 992,

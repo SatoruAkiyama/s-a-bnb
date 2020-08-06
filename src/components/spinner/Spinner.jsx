@@ -11,7 +11,7 @@ library.add(faSpinner);
 const Spinner = () => {
   return (
     <div className="spinner-wrapper">
-      <FontAwesomeIcon icon="spinner" size="4x" spin />
+      <FontAwesomeIcon icon="spinner" size="3x" spin />
     </div>
   );
 };
