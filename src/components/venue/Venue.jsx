@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import "./Venue.scss";
 
 const Venue = ({ id, imageUrl, location, pricePerNight, rating, title }) => {
+  if (id === 3) {
+    imageUrl =
+      "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  }
   return (
     <div className="venue">
       <Link to={`/venue/${id}`}>

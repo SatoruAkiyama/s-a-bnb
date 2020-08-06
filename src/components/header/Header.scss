@@ -17,10 +17,18 @@ $cTogglemenuBg: rgb(7, 7, 7);
   overflow-y: hidden;
   height: 70px;
 
+  & .header__nav__pc li {
+    color: $cWhite;
+    &:hover {
+      color: $cBlue;
+    }
+  }
+
   &.home-header {
     background-color: $cWhite;
 
-    & .header__nav__pc a {
+    & .header__nav__pc a,
+    & .header__nav__pc li {
       color: $cBlack;
       &:hover {
         color: $cBlue;

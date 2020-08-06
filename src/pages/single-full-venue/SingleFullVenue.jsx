@@ -31,7 +31,7 @@ const SingleFullVenue = ({ match }) => {
     getVenueInfo();
   }, [venueUrl, pointsUrl]);
 
-  const {
+  let {
     imageUrl,
     location,
     title,
@@ -41,6 +41,11 @@ const SingleFullVenue = ({ match }) => {
     pricePerNight,
     rating,
   } = venueInfo;
+  // eslint-disable-next-line
+  if (match.params.venueId == 3) {
+    imageUrl =
+      "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  }
 
   return (
     <div className="row single-full-venue fade-in">

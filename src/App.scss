@@ -7,7 +7,6 @@
   max-width: 1200px !important;
   width: 100% !important;
   margin: 0 auto;
-  padding: 0.5em;
   position: relative;
 }
 
@@ -15,15 +14,39 @@
   text-align: right;
 }
 
+.mb-ss {
+  margin-bottom: 10px;
+}
+
+.mb-s {
+  margin-bottom: 30px;
+}
+
+.mb-m {
+  margin-bottom: 60px;
+}
+
+.mb-l {
+  margin-bottom: 90px;
+}
+
+.mb-ll {
+  margin-bottom: 120px;
+}
+
+.mb-xl {
+  margin-bottom: 150px;
+}
+
 .main-header-text {
-  font-size: 20px !important;
+  font-size: 24px !important;
   line-height: 1.2 !important;
   letter-spacing: normal !important;
   color: #484848 !important;
   padding-top: 6px !important;
   padding-bottom: 6px !important;
   margin: 0px !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 30px !important;
   padding: 0px !important;
   font-weight: bold;
 }
@@ -77,7 +100,7 @@ textarea.materialize-textarea {
   }
 
   .main-header-text {
-    font-size: 30px !important;
+    font-size: 36px !important;
   }
 }
 

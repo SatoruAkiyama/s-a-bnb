@@ -76,22 +76,22 @@ const HomePage = () => {
       <div className="container fade-in-delay">
         <div className="container-fluid lower-fold">
           <div className="row">
-            <div className="col s12">
+            <div className="col s12 mb-ll">
               <Cities cities={cities} />
             </div>
-            <div className="cal s12">
+            <div className="cal s12  mb-ll">
               <Venues venues={recVenues.venues} text={recVenues.header} />
             </div>
-            <div className="col s12">
+            <div className="col s12  mb-ll">
               <Activities activities={activities} text="Activities" />
             </div>
-            <div className="col s12">
+            <div className="col s12  mb-ll">
               <Cities cities={europe.cities} text={europe.header} />
             </div>
-            <div className="col s12">
+            <div className="col s12  mb-ll">
               <Cities cities={asia.cities} text={asia.header} />
             </div>
-            <div className="col s12">
+            <div className="col s12  mb-ll">
               <Cities cities={exotic.cities} text={exotic.header} />
             </div>
           </div>
