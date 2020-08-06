@@ -1,9 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { modalToggle } from "../../redux/modal/modalActions";
+
+import Login from "../login/Login";
+import SignUp from "../login/SignUp";
 
 import "./MenuItem.scss";
 
 const MenuItem = ({ toggleMenu }) => {
+  const dispatch = useDispatch();
   return (
     <ul className="menu-items">
       <li className="menu-item">
@@ -16,15 +23,17 @@ const MenuItem = ({ toggleMenu }) => {
           Help
         </NavLink>
       </li>
-      <li className="menu-item">
-        <NavLink exact to="/sign-up" onClick={toggleMenu}>
-          Sign up
-        </NavLink>
+      <li
+        className="menu-item"
+        onClick={() => dispatch(modalToggle(true, <SignUp />))}
+      >
+        <span onClick={toggleMenu}>Sign Up</span>
       </li>
-      <li className="menu-item">
-        <NavLink exact to="/log-in" onClick={toggleMenu}>
-          Log in
-        </NavLink>
+      <li
+        className="menu-item"
+        onClick={() => dispatch(modalToggle(true, <Login />))}
+      >
+        <span onClick={toggleMenu}>Log in</span>
       </li>
     </ul>
   );

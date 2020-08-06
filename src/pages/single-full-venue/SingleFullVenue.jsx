@@ -43,7 +43,7 @@ const SingleFullVenue = ({ match }) => {
   } = venueInfo;
 
   return (
-    <div className="row single-full-venue">
+    <div className="row single-full-venue fade-in">
       <div
         className="single-full-venue__image"
         style={{
@@ -51,7 +51,7 @@ const SingleFullVenue = ({ match }) => {
         }}
       />
 
-      <div className="container">
+      <div className="container fade-in-delay">
         <div className="container-fluid lower-fold">
           <div className="col s12 m7 l8 left-details">
             <div className="location">{location}</div>

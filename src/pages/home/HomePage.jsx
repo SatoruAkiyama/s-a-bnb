@@ -61,7 +61,7 @@ const HomePage = () => {
   }
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid fade-in">
         <div className="row">
           <div className="home-page col s12">
             <div className="upper-fold">
@@ -73,7 +73,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container fade-in-delay">
         <div className="container-fluid lower-fold">
           <div className="row">
             <div className="col s12">

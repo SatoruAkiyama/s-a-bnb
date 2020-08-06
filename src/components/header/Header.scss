@@ -122,5 +122,9 @@ $cTogglemenuBg: rgb(7, 7, 7);
     &__nav {
       display: none;
     }
+    &.open {
+      height: 70px;
+      background-color: $cWhite;
+    }
   }
 }

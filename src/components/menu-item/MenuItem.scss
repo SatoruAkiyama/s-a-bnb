@@ -40,3 +40,15 @@ ul {
     }
   }
 }
+
+@media (min-width: 960px) {
+  .menu-item:last-child,
+  .menu-item:nth-child(3) {
+    transition: all 0.3s;
+    font-weight: 300;
+    cursor: pointer;
+    &:hover {
+      color: $cBlue;
+    }
+  }
+}

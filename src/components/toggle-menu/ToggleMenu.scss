@@ -42,6 +42,18 @@
     &:nth-child(1) {
       padding-top: 80px;
     }
+
+    &:nth-child(3) {
+      font-weight: 300;
+      color: $cWhite;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      font-weight: 300;
+      color: $cWhite;
+      cursor: pointer;
+    }
   }
 }
 
