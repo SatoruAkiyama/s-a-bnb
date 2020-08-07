@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import SignUp from "../sign-up/SignUp";
-
 import { modalToggle } from "../../redux/modal/modalActions";
 
-import "./Login.scss";
+import Login from "../login/Login";
+import "../login/Login.scss";
 
-const Login = () => {
+const SignUp = () => {
   const dispatch = useDispatch();
+
+  const [signUpWithEmail, setSignUpWithEmail] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -32,8 +33,8 @@ const Login = () => {
 
   return (
     <div className="login-form fade-in-fast">
-      <span>Log in</span>
-      <form onSubmit={handleSubmit}>
+      <span>Sign Up</span>
+      <form>
         <button className="facebook-login">
           Connect With Facebook&nbsp;&nbsp;<i className="fab fa-facebook"></i>
         </button>
@@ -45,31 +46,41 @@ const Login = () => {
           <span>or</span>
           <div className="or-divider"></div>
         </div>
-        <input
-          onChange={handleChange}
-          name="email"
-          value={email}
-          type="text"
-          placeholder="Email address"
-        />
-        <input
-          onChange={handleChange}
-          name="password"
-          value={password}
-          type="password"
-          placeholder="Password"
-        />
-        <button className="sign-up-button">Login</button>
+        {signUpWithEmail ? (
+          <div className="col s12 fade-in-fast">
+            <input
+              onChange={handleChange}
+              name="email"
+              value={email}
+              type="text"
+              placeholder="Email address"
+            />
+            <input
+              onChange={handleChange}
+              name="password"
+              value={password}
+              type="password"
+              placeholder="Password"
+            />
+            <button className="sign-up-button" onClick={handleSubmit}>
+              Sign Up
+            </button>
+          </div>
+        ) : (
+          <button type="button" className="sign-up-button">
+            <span onClick={() => setSignUpWithEmail(true)}>
+              Sign up with email
+            </span>
+          </button>
+        )}
         <div className="divider"></div>
         <div>
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <span
             className="pointer"
-            onClick={() => {
-              dispatch(modalToggle(true, <SignUp />));
-            }}
+            onClick={() => dispatch(modalToggle(true, <Login />))}
           >
-            Sign up
+            Log in
           </span>
         </div>
       </form>
@@ -77,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

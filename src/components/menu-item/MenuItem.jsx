@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { modalToggle } from "../../redux/modal/modalActions";
 
 import Login from "../login/Login";
-import SignUp from "../login/SignUp";
+import SignUp from "../sign-up/SignUp";
 
 import "./MenuItem.scss";
 

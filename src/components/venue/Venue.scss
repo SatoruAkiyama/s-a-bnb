@@ -22,3 +22,10 @@
     font-size: 14px;
   }
 }
+
+@media (min-width: 600px) {
+  .venue {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}
