@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
+import { selectCurrentUserEmail } from "../../redux/user/userSelector";
+import { modalToggle } from "../../redux/modal/modalActions";
+
 import Points from "../../components/point/Point";
+import SignUp from "../../components/sign-up/SignUp";
 
 import "./SingleFullVenue.scss";
 
 const SingleFullVenue = ({ match }) => {
+  const isCurrentUser = useSelector(selectCurrentUserEmail);
+  const dispatch = useDispatch();
+
   const [venueInfo, setVenue] = useState({});
   const [points, setPoints] = useState([]);
 
@@ -108,15 +115,31 @@ const SingleFullVenue = ({ match }) => {
               </select>
             </div>
 
-            <div className="col s12 right">
-              <button
-                className="btn-large waves-effect waves-light  red accent-3"
-                type="button"
-                style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
-              >
-                Reserve
-              </button>
-            </div>
+            {isCurrentUser ? (
+              <div className="col s12 center">
+                <button
+                  className="btn-large waves-effect waves-light  red accent-3"
+                  type="button"
+                  style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+                >
+                  Reserve
+                </button>
+              </div>
+            ) : (
+              <div className="col s12 center">
+                <span className="col s12  mb-ss" style={{ fontSize: `17px` }}>
+                  You must sign up to reserve.
+                </span>
+                <button
+                  className="btn-large waves-effect waves-light  red accent-3"
+                  type="button"
+                  style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+                  onClick={() => dispatch(modalToggle(true, <SignUp />))}
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
