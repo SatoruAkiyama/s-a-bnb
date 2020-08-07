@@ -4,7 +4,7 @@ import axios from "axios";
 import swal from "sweetalert";
 
 import { modalToggle } from "../../redux/modal/modalActions";
-import { signUp } from "../../redux/user/userActions";
+import { signUpAndSignIn } from "../../redux/user/userActions";
 
 import Login from "../login/Login";
 import "../login/Login.scss";
@@ -54,7 +54,7 @@ const SignUp = () => {
       }).then(() => {
         dispatch(modalToggle());
       });
-      dispatch(signUp(res.data));
+      dispatch(signUpAndSignIn(res.data));
     }
   };
 

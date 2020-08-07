@@ -1,7 +1,7 @@
 import userActionTypes from "./userActionTypes";
 
-export const signUp = (uerInfo) => ({
-  type: userActionTypes.SIGN_UP,
+export const signUpAndSignIn = (uerInfo) => ({
+  type: userActionTypes.SIGN_UP_AND_SIGN_IN,
   payload: uerInfo,
 });
 

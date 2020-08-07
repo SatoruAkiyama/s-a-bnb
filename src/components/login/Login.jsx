@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import swal from "sweetalert";
 
 import SignUp from "../sign-up/SignUp";
 
 import { modalToggle } from "../../redux/modal/modalActions";
+import { signUpAndSignIn } from "../../redux/user/userActions";
 
 import "./Login.scss";
 
@@ -25,9 +28,33 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    const url = `${window.apiHost}/users/login`;
+    const res = await axios.post(url, userInfo);
+
+    if (res.data.msg === "badPass") {
+      swal({
+        title: "Invalid password",
+        text:
+          "This password is incorrect. Please make sure to use the correct password for this email.",
+        icon: "error",
+      });
+    } else if (res.data.msg === "noEmail") {
+      swal({
+        title: "Invalid email",
+        text: "This email has not been resistered yet.",
+        icon: "error",
+      });
+    } else if (res.data.msg === "loggedIn") {
+      swal({
+        title: "Success",
+        icon: "success",
+      }).then(() => {
+        dispatch(modalToggle());
+      });
+      dispatch(signUpAndSignIn(res.data));
+    }
   };
 
   return (

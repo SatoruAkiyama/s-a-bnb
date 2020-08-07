@@ -6,7 +6,7 @@ const INTIAL_STATE = {
 
 const userReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
-    case userActionTypes.SIGN_UP:
+    case userActionTypes.SIGN_UP_AND_SIGN_IN:
       return {
         ...state,
         currentUser: action.payload,
