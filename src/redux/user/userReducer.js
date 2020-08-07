@@ -6,10 +6,15 @@ const INTIAL_STATE = {
 
 const userReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
-    case userActionTypes.REGISTER:
+    case userActionTypes.SIGN_UP:
       return {
         ...state,
         currentUser: action.payload,
+      };
+    case userActionTypes.LOG_OUT:
+      return {
+        ...state,
+        currentUser: {},
       };
     default:
       return state;

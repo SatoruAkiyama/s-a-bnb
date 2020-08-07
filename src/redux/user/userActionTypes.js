@@ -1,5 +1,6 @@
 const userActionTypes = {
-  REGISTER: "REGISTER",
+  SIGN_UP: "SIGN_UP",
+  LOG_OUT: "LOG_OUT",
 };
 
 export default userActionTypes;

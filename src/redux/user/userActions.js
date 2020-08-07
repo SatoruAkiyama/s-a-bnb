@@ -1,6 +1,10 @@
 import userActionTypes from "./userActionTypes";
 
-export const register = (uerInfo) => ({
-  type: userActionTypes.REGISTER,
+export const signUp = (uerInfo) => ({
+  type: userActionTypes.SIGN_UP,
   payload: uerInfo,
+});
+
+export const logout = () => ({
+  type: userActionTypes.LOG_OUT,
 });

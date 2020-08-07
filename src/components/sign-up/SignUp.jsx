@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import swal from "sweetalert";
 
 import { modalToggle } from "../../redux/modal/modalActions";
-import { register } from "../../redux/user/userActions";
-// import { selectCurrentUser } from "../../redux/user/userSelector";
+import { signUp } from "../../redux/user/userActions";
 
 import Login from "../login/Login";
 import "../login/Login.scss";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-
-  // const currentUser = useSelector(selectCurrentUser);
-  // console.log(currentUser);
 
   const [signUpWithEmail, setSignUpWithEmail] = useState(false);
 
@@ -55,13 +51,11 @@ const SignUp = () => {
       swal({
         title: "Success",
         icon: "success",
+      }).then(() => {
+        dispatch(modalToggle());
       });
-      dispatch(register(res.data));
+      dispatch(signUp(res.data));
     }
-
-    // const url2 = `${window.apiHost}/users/token-check`;
-    // const res2 = await axios.post(url2, { token });
-    // console.log(res2.data);
   };
 
   return (
