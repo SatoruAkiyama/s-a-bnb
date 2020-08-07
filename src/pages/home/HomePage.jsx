@@ -66,7 +66,7 @@ const HomePage = () => {
           <div className="home-page col s12">
             <div className="upper-fold">
               <div className="container">
-                <h1 className="right">Find Your World.</h1>
+                <h1 className="right">Live the world.</h1>
                 <SearchBox />
               </div>
             </div>
@@ -77,7 +77,7 @@ const HomePage = () => {
         <div className="container-fluid lower-fold">
           <div className="row">
             <div className="col s12 mb-ll">
-              <Cities cities={cities} />
+              <Cities cities={cities} text="Recommended Cities" />
             </div>
             <div className="cal s12  mb-ll">
               <Venues venues={recVenues.venues} text={recVenues.header} />

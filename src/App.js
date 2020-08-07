@@ -13,6 +13,7 @@ const App = () => {
   const SingleFullVenue = lazy(() =>
     import("./pages/single-full-venue/SingleFullVenue")
   );
+  const CityVenues = lazy(() => import("./pages/city-venues/CityVenues"));
   return (
     <BrowserRouter>
       <ScrollTop>
@@ -22,7 +23,8 @@ const App = () => {
           <Suspense fallback={<Spinner />}>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/venue/:venueId" component={SingleFullVenue} />
+              <Route exact path="/venue/:venueId" component={SingleFullVenue} />
+              <Route exact path="/city/:cityId" component={CityVenues} />
             </Switch>
           </Suspense>
         </div>

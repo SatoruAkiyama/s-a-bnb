@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 import "./City.scss";
 
-const City = ({ cityName, image, price, id }) => {
+const City = ({ cityName, image, price }) => {
   return (
     <div className="city s12">
-      <Link to={`/city/${id}`}>
+      <Link to={`/city/${cityName}`}>
         <div className="city__image">
           <img src={image} alt="" />
         </div>
