@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import "./SearchBox.scss";
 
@@ -19,12 +20,20 @@ const SearchBox = () => {
       [name]: value,
     });
   };
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search/${where}`);
+  };
+
   return (
     <div className="search-box col s12 m4">
       <h2 className="main-header-text">
         Book unique places to stay and things to do.
       </h2>
-      <form className="search-box-form">
+      <form onSubmit={handleSubmit} className="search-box-form">
         <div className="col s12 m12">
           <div className="form-label">Where</div>
           <div className="input-field" id="where">

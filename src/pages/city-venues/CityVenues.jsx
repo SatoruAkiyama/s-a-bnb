@@ -31,7 +31,7 @@ const CityVenues = ({ match }) => {
     return <Spinner />;
   }
   return (
-    <div className="container fade-in-delay">
+    <div className="container fade-in-delay" style={{ marginTop: `60px` }}>
       <div className="container-fluid lower-fold">
         <div className="row">
           <div className="cal s12">

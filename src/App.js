@@ -22,6 +22,8 @@ const App = () => {
   );
   const AccountPage = lazy(() => import("./pages/account/AccountPage"));
 
+  const SearchPage = lazy(() => import("./pages/search/SearchPage"));
+
   const user = useSelector(selectCurrentUserToken);
 
   return (
@@ -44,6 +46,7 @@ const App = () => {
                 path="/payment-success/:stripeToken"
                 component={PaymentSuccessPage}
               />
+              <Route exact path="/search/:searchTerm" component={SearchPage} />
               <Route
                 path="/account"
                 render={() => (user ? <AccountPage /> : <Redirect to="/" />)}

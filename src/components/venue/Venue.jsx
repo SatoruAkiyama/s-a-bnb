@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { imageUrlChange } from "../../utility/imageUrlChange";
+
 import "./Venue.scss";
 
 const Venue = ({ id, imageUrl, location, pricePerNight, rating, title }) => {
-  if (id === 3) {
-    imageUrl =
-      "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
-  }
+  // that i get pic from api is broke, so I change pic manually
+  imageUrl = imageUrlChange(id, imageUrl);
+
   return (
     <div className="venue">
       <Link to={`/venue/${id}`}>

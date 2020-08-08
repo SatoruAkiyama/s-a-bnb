@@ -11,6 +11,7 @@ import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
 
 import loadScript from "../../utility/loadScript";
+import { imageUrlChange } from "../../utility/imageUrlChange";
 
 import "./SingleFullVenue.scss";
 
@@ -60,11 +61,8 @@ const SingleFullVenue = ({ match }) => {
     getvenueData();
   }, [venueUrl, pointsUrl]);
 
-  // eslint-disable-next-line
-  if (match.params.venueId == 3) {
-    imageUrl =
-      "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
-  }
+  // that i get pic from api is broke, so I change pic manually
+  imageUrl = imageUrlChange(match.params.venueId, imageUrl);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -4,7 +4,11 @@ import axios from "axios";
 import swal from "sweetalert";
 import moment from "moment";
 
+import { imageUrlChange } from "../../utility/imageUrlChange";
+
 import pic from "../../assets/1.png";
+
+import "./Booking.scss";
 
 const Bookings = ({ bookings, type, token }) => {
   const cancelBooking = async (bid, bvl) => {
@@ -83,13 +87,14 @@ const Bookings = ({ bookings, type, token }) => {
         const dates = `${moment(booking.checkIn).format("MMM Do")} - ${moment(
           booking.checkOut
         ).format("MMM Do YYYY")}`;
-        if (booking.venueData.id === 3) {
-          booking.venueData.imageUrl =
-            "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
-        }
+        // that i get pic from api is broke, so I change pic manually
+        booking.venueData.imageUrl = imageUrlChange(
+          booking.venueData.id,
+          booking.venueData.imageUrl
+        );
         return (
           <div className="booking" key={i}>
-            <div className="col s12 m6 l4">
+            <div className="col s12 m6">
               <div className="card">
                 <div className="card-image">
                   <img src={booking.venueData.imageUrl} alt="" />

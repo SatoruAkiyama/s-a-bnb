@@ -12,6 +12,8 @@ import Spinner from "../../components/spinner/Spinner";
 
 import { selectCurrentUserToken } from "../../redux/user/userSelector";
 
+import { imageUrlChange } from "../../utility/imageUrlChange";
+
 import "./PaymentSuccessPage.scss";
 
 library.add(faLongArrowAltRight);
@@ -51,6 +53,11 @@ const PaymentSuccessPage = ({ match }) => {
     getResvData();
     //   eslint-disable-next-line
   }, []);
+
+  // that i get pic from api is broke, so I change pic manually
+  if (!!venueData) {
+    venueData.imageUrl = imageUrlChange(venueData.id, venueData.imageUrl);
+  }
 
   if (waiting) {
     return <Spinner />;
@@ -121,16 +128,7 @@ const PaymentSuccessPage = ({ match }) => {
                 .
               </div>
               <div className="col s12 resv-image mb-s">
-                {venueData.imageUrl ===
-                "https://airbnb-clone-prexel-images.s3.amazonaws.com/waypoints/pondhouse.jpg" ? (
-                  //   eslint-disable-next-line
-                  <img
-                    src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                    alt="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  />
-                ) : (
-                  <img src={venueData.imageUrl} alt={venueData.imageUrl} />
-                )}
+                <img src={venueData.imageUrl} alt={venueData.imageUrl} />
               </div>
             </div>
           </div>
