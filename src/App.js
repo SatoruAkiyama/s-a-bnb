@@ -10,10 +10,13 @@ import "./App.scss";
 
 const App = () => {
   const HomePage = lazy(() => import("./pages/home/HomePage"));
-  const SingleFullVenue = lazy(() =>
+  const SingleFullVenuePage = lazy(() =>
     import("./pages/single-full-venue/SingleFullVenue")
   );
-  const CityVenues = lazy(() => import("./pages/city-venues/CityVenues"));
+  const CityVenuesPage = lazy(() => import("./pages/city-venues/CityVenues"));
+  const PaymentSuccessPage = lazy(() =>
+    import("./pages/payment-success/PaymentSuccessPage")
+  );
   return (
     <BrowserRouter>
       <ScrollTop>
@@ -23,8 +26,17 @@ const App = () => {
           <Suspense fallback={<Spinner />}>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/venue/:venueId" component={SingleFullVenue} />
-              <Route exact path="/city/:cityId" component={CityVenues} />
+              <Route
+                exact
+                path="/venue/:venueId"
+                component={SingleFullVenuePage}
+              />
+              <Route exact path="/city/:cityId" component={CityVenuesPage} />
+              <Route
+                exact
+                path="/payment-success/:stripeToken"
+                component={PaymentSuccessPage}
+              />
             </Switch>
           </Suspense>
         </div>
