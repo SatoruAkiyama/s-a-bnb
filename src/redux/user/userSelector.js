@@ -11,3 +11,8 @@ export const selectCurrentUserEmail = createSelector(
   [selectCurrentUser],
   (currentUser) => currentUser.email
 );
+
+export const selectCurrentUserToken = createSelector(
+  [selectCurrentUser],
+  (currentUser) => currentUser.token
+);

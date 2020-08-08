@@ -1,27 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import moment from "moment";
+import swal from "sweetalert";
 
-import { selectCurrentUserEmail } from "../../redux/user/userSelector";
+import { selectCurrentUserToken } from "../../redux/user/userSelector";
 import { modalToggle } from "../../redux/modal/modalActions";
 
 import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
 
+import loadScript from "../../utility/loadScript";
+
 import "./SingleFullVenue.scss";
 
 const SingleFullVenue = ({ match }) => {
-  const isCurrentUser = useSelector(selectCurrentUserEmail);
+  const currentUserToken = useSelector(selectCurrentUserToken);
   const dispatch = useDispatch();
 
-  const [venueInfo, setVenue] = useState({});
+  const [venueData, setVenue] = useState({});
   const [points, setPoints] = useState([]);
+  const [reserveInfo, setReservInfo] = useState({
+    checkIn: "",
+    checkOut: "",
+    numberOfGuests: 1,
+  });
+
+  let {
+    imageUrl,
+    location,
+    title,
+    guests,
+    details,
+    amenities,
+    pricePerNight,
+    rating,
+  } = venueData;
+
+  const { checkIn, checkOut, numberOfGuests } = reserveInfo;
 
   const venueUrl = `${window.apiHost}/venue/${match.params.venueId}`;
   const pointsUrl = `${window.apiHost}/points/get`;
 
   useEffect(() => {
-    const getVenueInfo = async () => {
+    const getvenueData = async () => {
       const venueRes = await axios.get(venueUrl);
       setVenue(venueRes.data);
 
@@ -35,24 +57,70 @@ const SingleFullVenue = ({ match }) => {
       setPoints(points);
     };
 
-    getVenueInfo();
+    getvenueData();
   }, [venueUrl, pointsUrl]);
 
-  let {
-    imageUrl,
-    location,
-    title,
-    guests,
-    details,
-    amenities,
-    pricePerNight,
-    rating,
-  } = venueInfo;
   // eslint-disable-next-line
   if (match.params.venueId == 3) {
     imageUrl =
       "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
   }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setReservInfo({
+      ...reserveInfo,
+      [name]: value,
+    });
+  };
+
+  const handleReserve = async (e) => {
+    e.preventDefault();
+    const startDay = moment(checkIn);
+    const endDay = moment(checkOut);
+    const diffDays = endDay.diff(startDay, "days");
+    console.log(startDay);
+    if (diffDays < 1) {
+      swal({
+        title: "Check out date must be after check in day",
+        icon: "error",
+      });
+    } else if (isNaN(diffDays)) {
+      swal({
+        title: "Please make sure your dates are valid",
+        icon: "error",
+      });
+    } else {
+      // diff days is a valid number!
+      const totalPrice = pricePerNight * diffDays;
+      const scriptUrl = "https://js.stripe.com/v3";
+      const stripePublicKey =
+        "pk_test_5198HtPL5CfCPYJ3X8TTrO06ChWxotTw6Sm2el4WkYdrfN5Rh7vEuVguXyPrTezvm3ntblRX8TpjAHeMQfHkEpTA600waD2fMrT";
+      await loadScript(scriptUrl);
+      const stripe = window.Stripe(stripePublicKey);
+      const stripeSessionUrl = `${window.apiHost}/payment/create-session`;
+      const data = {
+        venueData,
+        totalPrice,
+        diffDays,
+        pricePerNight,
+        checkIn,
+        checkOut,
+        token: currentUserToken,
+        numberOfGuests,
+        currency: "USD",
+      };
+
+      const sessionVar = await axios.post(stripeSessionUrl, data);
+      stripe
+        .redirectToCheckout({
+          sessionId: sessionVar.data.id,
+        })
+        .then((result) => {
+          console.log(result);
+        });
+    }
+  };
 
   return (
     <div className="row single-full-venue fade-in">
@@ -88,17 +156,31 @@ const SingleFullVenue = ({ match }) => {
               <i className="material-icons">star</i>
               {rating}
             </div>
-            <div className="col s12 m12 l6 check-in">
+            <div className="col s12 xl6 check-in">
               Check-In
-              <input type="date" />
+              <input
+                type="date"
+                name="checkIn"
+                value={checkIn}
+                onChange={handleChange}
+              />
             </div>
-            <div className="col s12 m12 l6 check-out">
+            <div className="col s12 xl6 check-out">
               Check-Out
-              <input type="date" />
+              <input
+                type="date"
+                name="checkOut"
+                value={checkOut}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="col s12">
-              <select>
+              <select
+                name="numberOfGuests"
+                value={numberOfGuests}
+                onChange={handleChange}
+              >
                 <option value="1">1 Guest</option>
                 <option value="2">2 Guests</option>
                 {guests > 2 ? <option value="3">3 Guests</option> : null}
@@ -115,12 +197,13 @@ const SingleFullVenue = ({ match }) => {
               </select>
             </div>
 
-            {isCurrentUser ? (
+            {currentUserToken ? (
               <div className="col s12 center">
                 <button
                   className="btn-large waves-effect waves-light  red accent-3"
                   type="button"
                   style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+                  onClick={handleReserve}
                 >
                   Reserve
                 </button>
