@@ -79,7 +79,7 @@ const SignUp = () => {
               onChange={handleChange}
               name="email"
               value={email}
-              type="text"
+              type="email"
               placeholder="Email address"
               required
             />

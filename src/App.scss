@@ -10,6 +10,11 @@
   position: relative;
 }
 
+.account-container {
+  @extend .container;
+  max-width: 960px !important;
+}
+
 .right {
   text-align: right;
 }
@@ -92,6 +97,10 @@ textarea.materialize-textarea {
     opacity: 1;
     transform: none;
   }
+}
+
+.card .card-content {
+  padding: 10px !important;
 }
 
 @media (min-width: 600px) {

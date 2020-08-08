@@ -50,7 +50,7 @@ const PaymentSuccessPage = ({ match }) => {
     };
     getResvData();
     //   eslint-disable-next-line
-  }, [successUrl, paymentData]);
+  }, []);
 
   if (waiting) {
     return <Spinner />;
@@ -121,7 +121,16 @@ const PaymentSuccessPage = ({ match }) => {
                 .
               </div>
               <div className="col s12 resv-image mb-s">
-                <img src={venueData.imageUrl} alt={venueData.imageUrl} />
+                {venueData.imageUrl ===
+                "https://airbnb-clone-prexel-images.s3.amazonaws.com/waypoints/pondhouse.jpg" ? (
+                  //   eslint-disable-next-line
+                  <img
+                    src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                ) : (
+                  <img src={venueData.imageUrl} alt={venueData.imageUrl} />
+                )}
               </div>
             </div>
           </div>

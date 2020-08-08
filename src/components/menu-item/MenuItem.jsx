@@ -31,7 +31,9 @@ const MenuItem = ({ toggleMenu }) => {
       {currentUserEmail ? (
         <>
           <li className="menu-item">
-            <span onClick={toggleMenu}>{currentUserEmail}</span>
+            <NavLink exact to="/account" onClick={toggleMenu}>
+              {currentUserEmail}
+            </NavLink>
           </li>
           <li className="menu-item" onClick={() => dispatch(logout())}>
             <span onClick={toggleMenu}>Log out</span>

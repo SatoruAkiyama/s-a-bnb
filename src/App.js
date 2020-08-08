@@ -1,5 +1,8 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { selectCurrentUserToken } from "./redux/user/userSelector";
 
 import Header from "./components/header/Header";
 import Spinner from "./components/spinner/Spinner";
@@ -17,6 +20,10 @@ const App = () => {
   const PaymentSuccessPage = lazy(() =>
     import("./pages/payment-success/PaymentSuccessPage")
   );
+  const AccountPage = lazy(() => import("./pages/account/AccountPage"));
+
+  const user = useSelector(selectCurrentUserToken);
+
   return (
     <BrowserRouter>
       <ScrollTop>
@@ -36,6 +43,10 @@ const App = () => {
                 exact
                 path="/payment-success/:stripeToken"
                 component={PaymentSuccessPage}
+              />
+              <Route
+                path="/account"
+                render={() => (user ? <AccountPage /> : <Redirect to="/" />)}
               />
             </Switch>
           </Suspense>

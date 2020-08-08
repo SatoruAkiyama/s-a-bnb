@@ -1,0 +1,36 @@
+@import "../../variable";
+
+.account-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & ul {
+    list-style: none;
+    & li {
+      margin-bottom: 20px;
+    }
+  }
+
+  & a {
+    color: $cBlack !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .account-card {
+    & ul {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin-left: auto;
+
+      & li {
+        margin-bottom: 0;
+      }
+    }
+
+    a:hover {
+      color: $cRed !important;
+    }
+  }
+}
