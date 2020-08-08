@@ -43,6 +43,7 @@ const SearchBox = () => {
               placeholder="Anywhere"
               value={where}
               name="where"
+              required
             />
           </div>
         </div>
