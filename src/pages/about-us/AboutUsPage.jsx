@@ -7,7 +7,7 @@ const AboutUsPage = () => {
   return (
     <div className="fade-in">
       <div className="about-us  mb-l">
-        <div className="page-header-container mb-ll">
+        <div className="page-header-container">
           <PageHeader
             title="About us"
             imageUrl="https://images.pexels.com/photos/1612351/pexels-photo-1612351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"

@@ -8,6 +8,7 @@ import { selectCurrentUserToken } from "../../redux/user/userSelector";
 
 import AccountSlideBar from "../../components/account-bar/AccountBar";
 import Footer from "../../components/footer/Footer";
+import PageHeader from "../../components/page-header/PageHeader";
 
 import "./AccountPage.scss";
 
@@ -65,6 +66,12 @@ const AccountPage = () => {
 
   return (
     <div className="fade-in">
+      <div className="page-header-container">
+        <PageHeader
+          title="Account"
+          imageUrl="https://cdn.pixabay.com/photo/2016/07/30/00/03/winding-road-1556177_1280.jpg"
+        />
+      </div>
       <div className="account container mb-l">
         <AccountSlideBar />
         <div className="row  account-container">
