@@ -81,6 +81,29 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <div className="container">
+          <div
+            className="fb-share-button"
+            data-href="https://s-a-bnb.netlify.app"
+            data-layout="button"
+            data-size="large"
+          >
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fs-a-bnb.netlify.app%2F&amp;src=sdkpreparse"
+              className="fb-xfbml-parse-ignore"
+            >
+              <button
+                className="btn-large waves-effect waves-light   blue darken-3"
+                type="submit"
+                name="action"
+                style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+              >
+                SHARE&nbsp;&nbsp;<i className="fab fa-facebook"></i>
+              </button>
+            </a>
+          </div>
+
           <a
             className="grey-text text-lighten-4 right"
             href="https://satoruakiyama.com"
