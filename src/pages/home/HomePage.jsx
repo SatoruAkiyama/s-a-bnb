@@ -3,6 +3,7 @@ import axios from "axios";
 
 import SearchBox from "../../components/search-box/SearchBox";
 import Spinner from "../../components/spinner/Spinner";
+import Footer from "../../components/footer/Footer";
 import Cities from "../../components/cities/Cities";
 import Activities from "../../components/activities/Activities";
 import Venues from "../../components/venues/Venues";
@@ -128,6 +129,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

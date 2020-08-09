@@ -45,16 +45,16 @@ const PaymentSuccessPage = ({ match }) => {
 
       setWaiting(false);
 
-      // sent ny firestore
-      //   await axios
-      //     .post(`https://fir-a-bnb.firebaseio.com/reservation.json`, res.data)
-      //     .catch((e) => console.log(e.message));
+      // sent purchase data to my firestore too
+      await axios
+        .post(`https://fir-a-bnb.firebaseio.com/reservation.json`, res.data)
+        .catch((e) => console.log(e.message));
     };
     getResvData();
     //   eslint-disable-next-line
   }, []);
 
-  // that i get pic from api is broke, so I change pic manually
+  // that i get pic from api is broken, so I change pic manually
   if (!!venueData) {
     venueData.imageUrl = imageUrlChange(venueData.id, venueData.imageUrl);
   }
@@ -64,7 +64,7 @@ const PaymentSuccessPage = ({ match }) => {
   }
   return (
     <div className="reservation-success row fade-in container">
-      <h1 className="col s12 center">Start Packing!</h1>
+      <h1 className="col s12 center mb-s">Start Packing!</h1>
       <div className="resv-details col s12">
         <div className="confirmed col s12 row main-header-text">
           <FontAwesomeIcon
