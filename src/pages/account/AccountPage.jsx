@@ -7,6 +7,7 @@ import moment from "moment";
 import { selectCurrentUserToken } from "../../redux/user/userSelector";
 
 import AccountSlideBar from "../../components/account-bar/AccountBar";
+import Footer from "../../components/footer/Footer";
 
 import "./AccountPage.scss";
 
@@ -63,38 +64,43 @@ const AccountPage = () => {
   );
 
   return (
-    <div className="account container  fade-in">
-      <AccountSlideBar />
-      <div className="row  account-container">
-        <div className="col s12">
-          <Suspense fallback={""}>
-            <Switch>
-              <Route exact path="/account" component={AccountOverview} />
-              <Route
-                exact
-                path="/account/reservations/confirmed"
-                render={() => (
-                  <Booking
-                    type="upcoming"
-                    bookings={upcomingBookings}
-                    token={token}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/account/reservations/past"
-                render={() => <Booking type="past" bookings={pastBookinkgs} />}
-              />
-              <Route
-                exact
-                path="/account/change-password"
-                render={() => <ChangePassword token={token} />}
-              />
-            </Switch>
-          </Suspense>
+    <div className="fade-in">
+      <div className="account container mb-l">
+        <AccountSlideBar />
+        <div className="row  account-container">
+          <div className="col s12">
+            <Suspense fallback={""}>
+              <Switch>
+                <Route exact path="/account" component={AccountOverview} />
+                <Route
+                  exact
+                  path="/account/reservations/confirmed"
+                  render={() => (
+                    <Booking
+                      type="upcoming"
+                      bookings={upcomingBookings}
+                      token={token}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/account/reservations/past"
+                  render={() => (
+                    <Booking type="past" bookings={pastBookinkgs} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/account/change-password"
+                  render={() => <ChangePassword token={token} />}
+                />
+              </Switch>
+            </Suspense>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

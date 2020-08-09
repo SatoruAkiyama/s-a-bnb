@@ -5,6 +5,7 @@ import Spinner from "../../components/spinner/Spinner";
 import Cities from "../../components/cities/Cities";
 import Activities from "../../components/activities/Activities";
 import Venues from "../../components/venues/Venues";
+import Footer from "../../components/footer/Footer";
 
 import "../home/HomePage.scss";
 
@@ -42,42 +43,45 @@ const SearchPage = ({ match }) => {
   console.log(cities, venues);
 
   return (
-    <div className="container fade-in-delay" style={{ marginTop: `60px` }}>
-      <div className="container-fluid lower-fold">
-        <div className="row">
-          <div className="col s12 mb-ll">
-            {cities.length === 0 ? (
-              <h1 className="main-header-text">
-                There is not veune matching your search
-              </h1>
-            ) : (
-              <Cities cities={cities} text="Cities Matching your search" />
-            )}
-          </div>
-          <div className="col s12  mb-ll">
-            {venues.length === 0 ? (
-              <h1 className="main-header-text">
-                There is not veune matching your search
-              </h1>
-            ) : (
-              <Venues venues={venues} text="Venues Matching your search" />
-            )}
-          </div>
-          <div className="col s12  mb-ll">
-            {activities.length === 0 ? (
-              <h1 className="main-header-text">
-                There is not activity matching your search
-              </h1>
-            ) : (
-              <Activities
-                activities={activities}
-                text="Activities Matching your search"
-              />
-            )}
+    <>
+      <div className="container fade-in-delay" style={{ marginTop: `60px` }}>
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="col s12 mb-ll">
+              {cities.length === 0 ? (
+                <h1 className="main-header-text">
+                  There is not veune matching your search
+                </h1>
+              ) : (
+                <Cities cities={cities} text="Cities Matching your search" />
+              )}
+            </div>
+            <div className="col s12  mb-ll">
+              {venues.length === 0 ? (
+                <h1 className="main-header-text">
+                  There is not veune matching your search
+                </h1>
+              ) : (
+                <Venues venues={venues} text="Venues Matching your search" />
+              )}
+            </div>
+            <div className="col s12  mb-ll">
+              {activities.length === 0 ? (
+                <h1 className="main-header-text">
+                  There is not activity matching your search
+                </h1>
+              ) : (
+                <Activities
+                  activities={activities}
+                  text="Activities Matching your search"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import { modalToggle } from "../../redux/modal/modalActions";
 
 import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
+import Footer from "../../components/footer/Footer";
 
 import loadScript from "../../utility/loadScript";
 import { imageUrlChange } from "../../utility/imageUrlChange";
@@ -121,110 +122,113 @@ const SingleFullVenue = ({ match }) => {
   };
 
   return (
-    <div className="row single-full-venue fade-in">
-      <div
-        className="single-full-venue__image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-      />
+    <>
+      <div className="row single-full-venue fade-in mb-l">
+        <div
+          className="single-full-venue__image"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+        />
 
-      <div className="container fade-in-delay">
-        <div className="container-fluid lower-fold">
-          <div className="col s12 m7 l8 left-details">
-            <div className="location">{location}</div>
-            <div className="title">{title}</div>
-            <div className="guests">{guests} guests</div>
-            <div className="divider"></div>
-            {points}
-            <div className="divider"></div>
-            <div className="detail">{details}</div>
-            <br />
-            <div className="amenities">
-              <p>Amenities</p>
-              <span>{amenities}</span>
-            </div>
-          </div>
-
-          <div className="col s12 m5 l4  right-details">
-            <div className="price-per-day">
-              ${pricePerNight} <span>per day</span>
-            </div>
-            <div className="rating">
-              <i className="material-icons">star</i>
-              {rating}
-            </div>
-            <div className="col s12 xl6 check-in">
-              Check-In
-              <input
-                type="date"
-                name="checkIn"
-                value={checkIn}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="col s12 xl6 check-out">
-              Check-Out
-              <input
-                type="date"
-                name="checkOut"
-                value={checkOut}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="col s12">
-              <select
-                name="numberOfGuests"
-                value={numberOfGuests}
-                onChange={handleChange}
-              >
-                <option value="1">1 Guest</option>
-                <option value="2">2 Guests</option>
-                {guests > 2 ? <option value="3">3 Guests</option> : null}
-                {guests > 3 ? <option value="4">4 Guests</option> : null}
-                {guests > 7 ? (
-                  <>
-                    <option value="5">5 Guests</option>
-                    <option value="6">6 Guests</option>
-                    <option value="7">7 Guests</option>
-                    <option value="8">8 Guests</option>
-                  </>
-                ) : null}
-                {guests > 8 ? <option value="9">9 Guests</option> : null}
-              </select>
-            </div>
-
-            {currentUserToken ? (
-              <div className="col s12 center">
-                <button
-                  className="btn-large waves-effect waves-light  red accent-3"
-                  type="button"
-                  style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
-                  onClick={handleReserve}
-                >
-                  Reserve
-                </button>
+        <div className="container fade-in-delay">
+          <div className="container-fluid lower-fold">
+            <div className="col s12 m7 l8 left-details mb-m">
+              <div className="location">{location}</div>
+              <div className="title">{title}</div>
+              <div className="guests">{guests} guests</div>
+              <div className="divider"></div>
+              {points}
+              <div className="divider"></div>
+              <div className="detail">{details}</div>
+              <br />
+              <div className="amenities">
+                <p>Amenities</p>
+                <span>{amenities}</span>
               </div>
-            ) : (
-              <div className="col s12 center">
-                <span className="col s12  mb-ss" style={{ fontSize: `17px` }}>
-                  You must sign up to reserve.
-                </span>
-                <button
-                  className="btn-large waves-effect waves-light  red accent-3"
-                  type="button"
-                  style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
-                  onClick={() => dispatch(modalToggle(true, <SignUp />))}
-                >
-                  Sign Up
-                </button>
+            </div>
+
+            <div className="col s12 m5 l4  right-details">
+              <div className="price-per-day">
+                ${pricePerNight} <span>per day</span>
               </div>
-            )}
+              <div className="rating">
+                <i className="material-icons">star</i>
+                {rating}
+              </div>
+              <div className="col s12 xl6 check-in">
+                Check-In
+                <input
+                  type="date"
+                  name="checkIn"
+                  value={checkIn}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="col s12 xl6 check-out">
+                Check-Out
+                <input
+                  type="date"
+                  name="checkOut"
+                  value={checkOut}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col s12">
+                <select
+                  name="numberOfGuests"
+                  value={numberOfGuests}
+                  onChange={handleChange}
+                >
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  {guests > 2 ? <option value="3">3 Guests</option> : null}
+                  {guests > 3 ? <option value="4">4 Guests</option> : null}
+                  {guests > 7 ? (
+                    <>
+                      <option value="5">5 Guests</option>
+                      <option value="6">6 Guests</option>
+                      <option value="7">7 Guests</option>
+                      <option value="8">8 Guests</option>
+                    </>
+                  ) : null}
+                  {guests > 8 ? <option value="9">9 Guests</option> : null}
+                </select>
+              </div>
+
+              {currentUserToken ? (
+                <div className="col s12 center">
+                  <button
+                    className="btn-large waves-effect waves-light  red accent-3"
+                    type="button"
+                    style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+                    onClick={handleReserve}
+                  >
+                    Reserve
+                  </button>
+                </div>
+              ) : (
+                <div className="col s12 center">
+                  <span className="col s12  mb-ss" style={{ fontSize: `17px` }}>
+                    You must sign up to reserve.
+                  </span>
+                  <button
+                    className="btn-large waves-effect waves-light  red accent-3"
+                    type="button"
+                    style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
+                    onClick={() => dispatch(modalToggle(true, <SignUp />))}
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

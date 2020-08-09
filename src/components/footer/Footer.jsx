@@ -14,11 +14,15 @@ const Footer = () => {
 
   const currentUserEmail = useSelector(selectCurrentUserEmail);
   return (
-    <footer className="page-footer">
+    <footer className="page-footer fade-in" style={{ backgroundColor: "#000" }}>
       <div className="container">
         <div className="row">
           <div className="col l6 s12">
-            <h5 className="white-text">S-A-bnb</h5>
+            <h5 className="white-text">
+              <Link to="/" style={{ color: `#ff0062` }}>
+                S-A-bnb
+              </Link>
+            </h5>
             <p className="grey-text text-lighten-4 mb-s">
               Hello, this is a web application like a hosting service.
             </p>
@@ -77,9 +81,14 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <div className="container">
-          <Link className="grey-text text-lighten-4 right" to="/">
+          <a
+            className="grey-text text-lighten-4 right"
+            href="https://satoruakiyama.com"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             © 2020 Satoru Akiyama
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Venues from "../../components/venues/Venues";
 import Spinner from "../../components/spinner/Spinner";
+import Footer from "../../components/footer/Footer";
 
 const CityVenues = ({ match }) => {
   const [cityVenueInfo, setCityVenueInfo] = useState({
@@ -26,20 +27,26 @@ const CityVenues = ({ match }) => {
     getCityVenueInfo();
     // eslint-disable-next-line
   }, [url]);
-  console.log(header, venues);
+
   if (!header || !venues) {
     return <Spinner />;
   }
   return (
-    <div className="container fade-in-delay" style={{ marginTop: `60px` }}>
-      <div className="container-fluid lower-fold">
-        <div className="row">
-          <div className="cal s12">
-            <Venues venues={venues} text={header} />
+    <>
+      <div
+        className="container fade-in-delay mb-l"
+        style={{ marginTop: `60px` }}
+      >
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="cal s12">
+              <Venues venues={venues} text={header} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
