@@ -8,6 +8,7 @@ import Header from "./components/header/Header";
 import Spinner from "./components/spinner/Spinner";
 import ScrollTop from "./components/scrollTop/ScrollTop";
 import Modal from "./components/modal/Modal";
+import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 
 import "./App.scss";
 
@@ -28,6 +29,7 @@ const App = () => {
   const RecruitContactPage = lazy(() =>
     import("./pages/recruit-contact/RecruitContactPage")
   );
+  const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));
 
   const user = useSelector(selectCurrentUserToken);
 
@@ -35,42 +37,49 @@ const App = () => {
     <BrowserRouter>
       <ScrollTop>
         <Header />
-        <Modal />
-        <div className="app">
-          <Suspense fallback={<Spinner />}>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/about-us" component={AboutUsPage} />
-              <Route exact path="/recruit" component={RecruitPage} />
-              <Route
-                exact
-                path="/recruit/:recruitId"
-                component={RecruitContactPage}
-              />
-              <Route
-                exact
-                path="/venue/:venueId"
-                component={SingleFullVenuePage}
-              />
-              <Route exact path="/city/:cityId" component={CityVenuesPage} />
-              <Route
-                exact
-                path="/activity/:activityId"
-                component={ActivityPage}
-              />
-              <Route
-                exact
-                path="/payment-success/:stripeToken"
-                component={PaymentSuccessPage}
-              />
-              <Route exact path="/search/:searchTerm" component={SearchPage} />
-              <Route
-                path="/account"
-                render={() => (user ? <AccountPage /> : <Redirect to="/" />)}
-              />
-            </Switch>
-          </Suspense>
-        </div>
+        <ErrorBoundary>
+          <Modal />
+          <div className="app">
+            <Suspense fallback={<Spinner />}>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/about-us" component={AboutUsPage} />
+                <Route exact path="/recruit" component={RecruitPage} />
+                <Route
+                  exact
+                  path="/recruit/:recruitId"
+                  component={RecruitContactPage}
+                />
+                <Route
+                  exact
+                  path="/venue/:venueId"
+                  component={SingleFullVenuePage}
+                />
+                <Route exact path="/city/:cityId" component={CityVenuesPage} />
+                <Route
+                  exact
+                  path="/activity/:activityId"
+                  component={ActivityPage}
+                />
+                <Route
+                  exact
+                  path="/payment-success/:stripeToken"
+                  component={PaymentSuccessPage}
+                />
+                <Route
+                  exact
+                  path="/search/:searchTerm"
+                  component={SearchPage}
+                />
+                <Route
+                  path="/account"
+                  render={() => (user ? <AccountPage /> : <Redirect to="/" />)}
+                />
+                <Route render={() => <ErrorPage />} />
+              </Switch>
+            </Suspense>
+          </div>
+        </ErrorBoundary>
       </ScrollTop>
     </BrowserRouter>
   );
