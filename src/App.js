@@ -25,6 +25,9 @@ const App = () => {
   const ActivityPage = lazy(() => import("./pages/activity/ActivityPage"));
   const AboutUsPage = lazy(() => import("./pages/about-us/AboutUsPage"));
   const RecruitPage = lazy(() => import("./pages/recruit/RecruitPage"));
+  const RecruitContactPage = lazy(() =>
+    import("./pages/recruit-contact/RecruitContactPage")
+  );
 
   const user = useSelector(selectCurrentUserToken);
 
@@ -39,6 +42,11 @@ const App = () => {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/about-us" component={AboutUsPage} />
               <Route exact path="/recruit" component={RecruitPage} />
+              <Route
+                exact
+                path="/recruit/:recruitId"
+                component={RecruitContactPage}
+              />
               <Route
                 exact
                 path="/venue/:venueId"

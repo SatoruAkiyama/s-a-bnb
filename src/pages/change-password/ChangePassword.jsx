@@ -45,7 +45,6 @@ const ChangePasssword = ({ token }) => {
         });
       }
     }
-    console.log(newPassword);
   };
 
   return (
