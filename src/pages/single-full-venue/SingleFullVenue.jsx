@@ -78,7 +78,8 @@ const SingleFullVenue = ({ match }) => {
     const startDay = moment(checkIn);
     const endDay = moment(checkOut);
     const diffDays = endDay.diff(startDay, "days");
-    console.log(startDay);
+    const now = moment();
+    const isPast = startDay.diff(now, "days");
     if (diffDays < 1) {
       swal({
         title: "Check out date must be after check in day",
@@ -87,6 +88,11 @@ const SingleFullVenue = ({ match }) => {
     } else if (isNaN(diffDays)) {
       swal({
         title: "Please make sure your dates are valid",
+        icon: "error",
+      });
+    } else if (isPast < 1) {
+      swal({
+        title: "Check in date must be after today.",
         icon: "error",
       });
     } else {

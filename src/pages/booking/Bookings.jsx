@@ -77,6 +77,8 @@ const Bookings = ({ bookings, type, token }) => {
               top: `40%`,
               left: `50%`,
               transform: `translateX(-50%)`,
+              width: "100%",
+              textAlign: `center`,
             }}
           >
             {text}
