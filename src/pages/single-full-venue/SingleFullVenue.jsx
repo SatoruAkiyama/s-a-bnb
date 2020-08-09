@@ -185,14 +185,10 @@ const SingleFullVenue = ({ match }) => {
                   <option value="2">2 Guests</option>
                   {guests > 2 ? <option value="3">3 Guests</option> : null}
                   {guests > 3 ? <option value="4">4 Guests</option> : null}
-                  {guests > 7 ? (
-                    <>
-                      <option value="5">5 Guests</option>
-                      <option value="6">6 Guests</option>
-                      <option value="7">7 Guests</option>
-                      <option value="8">8 Guests</option>
-                    </>
-                  ) : null}
+                  {guests > 4 ? <option value="5">5 Guests</option> : null}
+                  {guests > 5 ? <option value="6">6 Guests</option> : null}
+                  {guests > 6 ? <option value="7">7 Guests</option> : null}
+                  {guests > 7 ? <option value="8">8 Guests</option> : null}
                   {guests > 8 ? <option value="9">9 Guests</option> : null}
                 </select>
               </div>
