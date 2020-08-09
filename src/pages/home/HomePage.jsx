@@ -17,9 +17,22 @@ const HomePage = () => {
     exotic: {},
     activities: [],
     recVenues: {},
+    activitiesDiving: [],
+    activitiesBaking: [],
+    activitiesScenery: [],
   });
 
-  const { cities, europe, asia, exotic, activities, recVenues } = allData;
+  const {
+    cities,
+    europe,
+    asia,
+    exotic,
+    activities,
+    recVenues,
+    activitiesDiving,
+    activitiesBaking,
+    activitiesScenery,
+  } = allData;
 
   const citiesUrl = `${window.apiHost}/cities/recommended`;
   const europeUrl = `${window.apiHost}/cities/europe`;
@@ -27,6 +40,9 @@ const HomePage = () => {
   const exoticUrl = `${window.apiHost}/cities/exotic`;
   const activitiesUrl = `${window.apiHost}/activities/today`;
   const recVenuesUrl = `${window.apiHost}/venues/recommended`;
+  const activitiesDivingUrl = `${window.apiHost}/activities/diving`;
+  const activitiesBakingUrl = `${window.apiHost}/activities/baking`;
+  const activitiesSceneryUrl = `${window.apiHost}/activities/scenery`;
 
   const promiseArray = [];
 
@@ -36,6 +52,9 @@ const HomePage = () => {
   promiseArray.push(axios.get(exoticUrl));
   promiseArray.push(axios.get(activitiesUrl));
   promiseArray.push(axios.get(recVenuesUrl));
+  promiseArray.push(axios.get(activitiesDivingUrl));
+  promiseArray.push(axios.get(activitiesBakingUrl));
+  promiseArray.push(axios.get(activitiesSceneryUrl));
 
   useEffect(() => {
     const getData = async () => {
@@ -48,6 +67,9 @@ const HomePage = () => {
           exotic: data[3].data,
           activities: data[4].data,
           recVenues: data[5].data,
+          activitiesDiving: data[6].data,
+          activitiesBaking: data[7].data,
+          activitiesScenery: data[8].data,
         })
       );
     };
@@ -55,6 +77,12 @@ const HomePage = () => {
     getData();
     // eslint-disable-next-line
   }, []);
+
+  const activityMore = [
+    ...activitiesBaking.slice(1, 2),
+    ...activitiesDiving,
+    ...activitiesScenery.slice(1, 2),
+  ];
 
   if (cities.length === 0) {
     return <Spinner />;
@@ -83,7 +111,7 @@ const HomePage = () => {
               <Venues venues={recVenues.venues} text={recVenues.header} />
             </div>
             <div className="col s12  mb-ll">
-              <Activities activities={activities} text="Activities" />
+              <Activities activities={activities} text="Popular Activities" />
             </div>
             <div className="col s12  mb-ll">
               <Cities cities={europe.cities} text={europe.header} />
@@ -93,6 +121,9 @@ const HomePage = () => {
             </div>
             <div className="col s12  mb-ll">
               <Cities cities={exotic.cities} text={exotic.header} />
+            </div>
+            <div className="col s12  mb-ll">
+              <Activities activities={activityMore} text="More Activities" />
             </div>
           </div>
         </div>

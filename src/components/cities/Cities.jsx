@@ -20,7 +20,7 @@ const Cities = ({ cities, text }) => {
       </>
     );
   }
-  console.log(cities);
+
   return (
     <>
       <h1 className="main-header-text">{text}</h1>

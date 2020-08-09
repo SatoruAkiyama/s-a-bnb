@@ -21,8 +21,8 @@ const App = () => {
     import("./pages/payment-success/PaymentSuccessPage")
   );
   const AccountPage = lazy(() => import("./pages/account/AccountPage"));
-
   const SearchPage = lazy(() => import("./pages/search/SearchPage"));
+  const ActivityPage = lazy(() => import("./pages/activity/ActivityPage"));
 
   const user = useSelector(selectCurrentUserToken);
 
@@ -41,6 +41,11 @@ const App = () => {
                 component={SingleFullVenuePage}
               />
               <Route exact path="/city/:cityId" component={CityVenuesPage} />
+              <Route
+                exact
+                path="/activity/:activityId"
+                component={ActivityPage}
+              />
               <Route
                 exact
                 path="/payment-success/:stripeToken"
