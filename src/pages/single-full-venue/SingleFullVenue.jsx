@@ -195,6 +195,16 @@ const SingleFullVenue = ({ match }) => {
 
               {currentUserToken ? (
                 <div className="col s12 center">
+                  <span
+                    className="col s12  mb-ss red-text text-accent-3"
+                    style={{ fontSize: `17px` }}
+                  >
+                    *Please use the following test credit card for payments*
+                    <br />
+                    4242 4242 4242 4242
+                    <br />
+                    -Exp: 05/55 - CVV: 555
+                  </span>
                   <button
                     className="btn-large waves-effect waves-light  red accent-3"
                     type="button"

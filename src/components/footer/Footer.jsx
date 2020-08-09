@@ -24,7 +24,8 @@ const Footer = () => {
               </Link>
             </h5>
             <p className="grey-text text-lighten-4 mb-s">
-              Hello, this is a web application like a hosting service.
+              Hello, this is a web application like vacation rental online
+              marketplace.
             </p>
           </div>
           <div className="col l4 offset-l2 s12">
