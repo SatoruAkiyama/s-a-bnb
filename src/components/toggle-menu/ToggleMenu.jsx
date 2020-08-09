@@ -16,7 +16,7 @@ const ToggleMenu = ({ toggleMenu, open }) => {
           className="fb-share-button"
           data-href="https://s-a-bnb.netlify.app"
           data-layout="button"
-          data-size="large"
+          data-size="small"
         >
           <a
             target="_blank"

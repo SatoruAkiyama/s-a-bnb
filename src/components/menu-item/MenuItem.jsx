@@ -19,13 +19,13 @@ const MenuItem = ({ toggleMenu }) => {
   return (
     <ul className="menu-items">
       <li className="menu-item">
-        <NavLink exact to="become-a-host" onClick={toggleMenu}>
-          Become a host
+        <NavLink exact to="about-us" onClick={toggleMenu}>
+          About us
         </NavLink>
       </li>
       <li className="menu-item">
-        <NavLink exact to="/help" onClick={toggleMenu}>
-          Help
+        <NavLink exact to="/recruit" onClick={toggleMenu}>
+          Recruit
         </NavLink>
       </li>
       {currentUserEmail ? (

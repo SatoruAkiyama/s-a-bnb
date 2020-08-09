@@ -30,13 +30,13 @@ const Footer = () => {
           <div className="col l4 offset-l2 s12">
             <ul>
               <li className="mb-s">
-                <Link className="grey-text text-lighten-3" to="/become-a-host">
-                  Become a host
+                <Link className="grey-text text-lighten-3" to="/about-us">
+                  About us
                 </Link>
               </li>
               <li className="mb-s">
-                <Link className="grey-text text-lighten-3" to="/help">
-                  Help
+                <Link className="grey-text text-lighten-3" to="/recruit">
+                  Recruit
                 </Link>
               </li>
               {currentUserEmail ? (
@@ -85,7 +85,7 @@ const Footer = () => {
             className="fb-share-button"
             data-href="https://s-a-bnb.netlify.app"
             data-layout="button"
-            data-size="large"
+            data-size="small"
           >
             <a
               target="_blank"

@@ -43,6 +43,10 @@
   margin-bottom: 150px;
 }
 
+.page-header-container {
+  @extend .mb-l;
+}
+
 .main-header-text {
   font-size: 24px !important;
   line-height: 1.2 !important;

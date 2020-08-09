@@ -23,6 +23,8 @@ const App = () => {
   const AccountPage = lazy(() => import("./pages/account/AccountPage"));
   const SearchPage = lazy(() => import("./pages/search/SearchPage"));
   const ActivityPage = lazy(() => import("./pages/activity/ActivityPage"));
+  const AboutUsPage = lazy(() => import("./pages/about-us/AboutUsPage"));
+  const RecruitPage = lazy(() => import("./pages/recruit/RecruitPage"));
 
   const user = useSelector(selectCurrentUserToken);
 
@@ -35,6 +37,8 @@ const App = () => {
           <Suspense fallback={<Spinner />}>
             <Switch>
               <Route exact path="/" component={HomePage} />
+              <Route exact path="/about-us" component={AboutUsPage} />
+              <Route exact path="/recruit" component={RecruitPage} />
               <Route
                 exact
                 path="/venue/:venueId"
