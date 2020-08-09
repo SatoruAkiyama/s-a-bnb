@@ -33,6 +33,7 @@
   & h2 {
     color: $cRed;
     font-size: 20px;
+    margin: 0;
   }
 }
 
@@ -44,21 +45,15 @@
     background-color: transparent;
 
     & h1 {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 35%;
       color: $cBlack;
-      width: 100%;
-      margin: 0 auto;
-      text-align: center;
     }
 
     &__img {
       position: absolute;
       top: 0;
       right: 0;
-      height: 488px;
+      height: 480px;
       width: 700px;
       z-index: 99;
     }
@@ -68,7 +63,7 @@
 
     &__text {
       position: absolute;
-      top: 50%;
+      top: 58%;
       width: 528px;
       height: 200px;
       background-color: $cWhite;
@@ -82,9 +77,9 @@
       position: absolute;
       top: 25%;
       right: 12.5%;
-      bottom: -32px;
+      bottom: -40px;
       left: 0;
-      background-color: #ddd;
+      background-color: #eae8e8;
     }
 
     &.phone {

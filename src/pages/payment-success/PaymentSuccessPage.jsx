@@ -48,10 +48,7 @@ const PaymentSuccessPage = ({ match }) => {
 
       // sent purchase data to my firestore too
       await axios
-        .post(
-          `https://fir-a-bnb.firebaseio.com/${res.data.userData.email}.json`,
-          res.data
-        )
+        .post(`https://fir-a-bnb.firebaseio.com/reservation.json`, res.data)
         .catch((e) => console.log(e.message));
     };
     getResvData();

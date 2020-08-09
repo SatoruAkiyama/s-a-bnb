@@ -97,7 +97,7 @@ $cTogglemenuBg: rgb(7, 7, 7);
     }
     &.menu-open {
       & > span {
-        background-color: $cTeal;
+        background-color: $cRed;
 
         &:nth-child(1) {
           transition-delay: 70ms;
