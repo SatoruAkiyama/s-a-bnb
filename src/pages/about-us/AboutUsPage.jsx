@@ -31,13 +31,13 @@ const AboutUsPage = () => {
                 </blockquote>
               </div>
               <div
-                className="card #546e7a blue-grey darken-3"
+                className="card"
                 style={{
                   padding: `20px`,
                 }}
               >
                 <div
-                  className="card-content  white-text"
+                  className="card-content blue-grey-text text-darken-4"
                   style={{
                     maxWidth: `800px`,
                     margin: `20px auto`,
@@ -55,7 +55,7 @@ const AboutUsPage = () => {
                   <p>Our company name is「 S-A-bnb 」.</p>
                 </div>
                 <div
-                  className="card-content  white-text"
+                  className="card-content  blue-grey-text text-darken-4"
                   style={{
                     maxWidth: `800px`,
                     margin: `20px auto`,
@@ -65,7 +65,7 @@ const AboutUsPage = () => {
                   <p>Our company was founed in 2020/ 05/ 10</p>
                 </div>
                 <div
-                  className="card-content  white-text"
+                  className="card-content  blue-grey-text text-darken-4"
                   style={{
                     maxWidth: `800px`,
                     margin: `20px auto`,
@@ -79,7 +79,7 @@ const AboutUsPage = () => {
                   </p>
                 </div>
                 <div
-                  className="card-content  white-text"
+                  className="card-content  blue-grey-text text-darken-4"
                   style={{
                     maxWidth: `800px`,
                     margin: `20px auto`,
