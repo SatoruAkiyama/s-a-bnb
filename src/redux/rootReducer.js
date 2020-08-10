@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./user/userReducer";
 import modalReducer from "./modal/modalReducer";
+import mainDataReducer from "./main-data/mainDataReducer";
 
 const persistConfig = {
   key: "root",
@@ -14,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   modal: modalReducer,
+  mainData: mainDataReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

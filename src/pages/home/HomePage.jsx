@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import SearchBox from "../../components/search-box/SearchBox";
 import Spinner from "../../components/spinner/Spinner";
@@ -8,84 +8,34 @@ import Cities from "../../components/cities/Cities";
 import Activities from "../../components/activities/Activities";
 import Venues from "../../components/venues/Venues";
 
+import { fetchCollectionsStart } from "../../redux/main-data/mainDataActions";
+import {
+  selectActivities,
+  selectActivityMore,
+  selectAsia,
+  selectCities,
+  selectEurope,
+  selectExotic,
+  selectRecVenues,
+} from "../../redux/main-data/mainDataSelector";
+
 import "./HomePage.scss";
 
 const HomePage = () => {
-  const [allData, setAllData] = useState({
-    cities: [],
-    europe: {},
-    asia: {},
-    exotic: {},
-    activities: [],
-    recVenues: {},
-    activitiesDiving: [],
-    activitiesBaking: [],
-    activitiesScenery: [],
-  });
-
-  const {
-    cities,
-    europe,
-    asia,
-    exotic,
-    activities,
-    recVenues,
-    activitiesDiving,
-    activitiesBaking,
-    activitiesScenery,
-  } = allData;
-
-  const citiesUrl = `${window.apiHost}/cities/recommended`;
-  const europeUrl = `${window.apiHost}/cities/europe`;
-  const asiaUrl = `${window.apiHost}/cities/asia`;
-  const exoticUrl = `${window.apiHost}/cities/exotic`;
-  const activitiesUrl = `${window.apiHost}/activities/today`;
-  const recVenuesUrl = `${window.apiHost}/venues/recommended`;
-  const activitiesDivingUrl = `${window.apiHost}/activities/diving`;
-  const activitiesBakingUrl = `${window.apiHost}/activities/baking`;
-  const activitiesSceneryUrl = `${window.apiHost}/activities/scenery`;
-
-  const promiseArray = [];
-
-  promiseArray.push(axios.get(citiesUrl));
-  promiseArray.push(axios.get(europeUrl));
-  promiseArray.push(axios.get(asiaUrl));
-  promiseArray.push(axios.get(exoticUrl));
-  promiseArray.push(axios.get(activitiesUrl));
-  promiseArray.push(axios.get(recVenuesUrl));
-  promiseArray.push(axios.get(activitiesDivingUrl));
-  promiseArray.push(axios.get(activitiesBakingUrl));
-  promiseArray.push(axios.get(activitiesSceneryUrl));
+  const dispatch = useDispatch();
+  const cities = useSelector(selectCities);
+  const europe = useSelector(selectEurope);
+  const asia = useSelector(selectAsia);
+  const exotic = useSelector(selectExotic);
+  const activities = useSelector(selectActivities);
+  const recVenues = useSelector(selectRecVenues);
+  const activityMore = useSelector(selectActivityMore);
 
   useEffect(() => {
-    const getData = async () => {
-      Promise.all(promiseArray).then((data) =>
-        setAllData({
-          ...allData,
-          cities: data[0].data,
-          europe: data[1].data,
-          asia: data[2].data,
-          exotic: data[3].data,
-          activities: data[4].data,
-          recVenues: data[5].data,
-          activitiesDiving: data[6].data,
-          activitiesBaking: data[7].data,
-          activitiesScenery: data[8].data,
-        })
-      );
-    };
+    dispatch(fetchCollectionsStart());
+  }, [dispatch]);
 
-    getData();
-    // eslint-disable-next-line
-  }, []);
-
-  const activityMore = [
-    ...activitiesBaking.slice(1, 2),
-    ...activitiesDiving,
-    ...activitiesScenery.slice(1, 2),
-  ];
-
-  if (cities.length === 0) {
+  if (cities === null) {
     return <Spinner />;
   }
   return (
