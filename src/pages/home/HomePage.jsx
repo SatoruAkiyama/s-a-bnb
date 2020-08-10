@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
 import SearchBox from "../../components/search-box/SearchBox";
 import Spinner from "../../components/spinner/Spinner";
@@ -8,7 +8,6 @@ import Cities from "../../components/cities/Cities";
 import Activities from "../../components/activities/Activities";
 import Venues from "../../components/venues/Venues";
 
-import { fetchCollectionsStart } from "../../redux/main-data/mainDataActions";
 import {
   selectActivities,
   selectActivityMore,
@@ -22,7 +21,6 @@ import {
 import "./HomePage.scss";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const cities = useSelector(selectCities);
   const europe = useSelector(selectEurope);
   const asia = useSelector(selectAsia);
@@ -30,10 +28,6 @@ const HomePage = () => {
   const activities = useSelector(selectActivities);
   const recVenues = useSelector(selectRecVenues);
   const activityMore = useSelector(selectActivityMore);
-
-  useEffect(() => {
-    dispatch(fetchCollectionsStart());
-  }, [dispatch]);
 
   if (cities === null) {
     return <Spinner />;

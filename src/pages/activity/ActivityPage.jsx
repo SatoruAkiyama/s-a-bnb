@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
+import Activities from "../../components/activities/Activities";
 import Spinner from "../../components/spinner/Spinner";
 import Footer from "../../components/footer/Footer";
 
+import { selectActivities } from "../../redux/main-data/mainDataSelector";
+
 const ActivityPage = ({ match }) => {
+  const activities = useSelector(selectActivities);
+
   const [activity, setActivity] = useState({});
   const [waiting, setWaiting] = useState(true);
 
@@ -15,8 +21,8 @@ const ActivityPage = ({ match }) => {
       await setActivity(res.data);
       setWaiting(false);
     };
-
     getData();
+    return () => setWaiting(true);
   }, [url]);
 
   if (waiting) {
@@ -25,7 +31,7 @@ const ActivityPage = ({ match }) => {
   return (
     <>
       <div
-        className="activity-page container fade-in mb-l"
+        className="activity-page container fade-in mb-s"
         style={{ marginTop: `60px` }}
       >
         <h1 className="main-header-text">{activity.title}</h1>
@@ -99,6 +105,15 @@ const ActivityPage = ({ match }) => {
                 Description
               </div>
               <span>{activity.description}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container fade-in-delay">
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="col s12 mb-ll">
+              <Activities activities={activities} text="Popular Activities" />
             </div>
           </div>
         </div>

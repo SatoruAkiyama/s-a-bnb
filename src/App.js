@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { selectCurrentUserToken } from "./redux/user/userSelector";
+import { fetchCollectionsStart } from "./redux/main-data/mainDataActions";
 
 import Header from "./components/header/Header";
 import Spinner from "./components/spinner/Spinner";
@@ -13,6 +14,11 @@ import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 import "./App.scss";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCollectionsStart());
+  }, [dispatch]);
+
   const HomePage = lazy(() => import("./pages/home/HomePage"));
   const SingleFullVenuePage = lazy(() =>
     import("./pages/single-full-venue/SingleFullVenue")

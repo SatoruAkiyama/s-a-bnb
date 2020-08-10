@@ -6,12 +6,15 @@ import swal from "sweetalert";
 
 import { selectCurrentUserToken } from "../../redux/user/userSelector";
 import { modalToggle } from "../../redux/modal/modalActions";
+import { selectCities } from "../../redux/main-data/mainDataSelector";
 
 import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
 import Comment from "../../components/comment/Comment";
 import Footer from "../../components/footer/Footer";
 import PersonCard from "../../components/person-card/PersonCard";
+import Cities from "../../components/cities/Cities";
+import Spinner from "../../components/spinner/Spinner";
 
 import loadScript from "../../utility/loadScript";
 import { imageUrlChange } from "../../utility/imageUrlChange";
@@ -20,8 +23,10 @@ import "./SingleFullVenue.scss";
 
 const SingleFullVenue = ({ match }) => {
   const currentUserToken = useSelector(selectCurrentUserToken);
+  const cities = useSelector(selectCities);
   const dispatch = useDispatch();
 
+  const [waiting, setWaiting] = useState(true);
   const [venueData, setVenue] = useState({});
   const [points, setPoints] = useState([]);
   const [reserveInfo, setReservInfo] = useState({
@@ -49,7 +54,7 @@ const SingleFullVenue = ({ match }) => {
   useEffect(() => {
     const getvenueData = async () => {
       const venueRes = await axios.get(venueUrl);
-      setVenue(venueRes.data);
+      await setVenue(venueRes.data);
 
       const pointsDescRes = await axios.get(pointsUrl);
 
@@ -58,8 +63,10 @@ const SingleFullVenue = ({ match }) => {
         .map((point, i) => (
           <Points key={i} pointsDesc={pointsDescRes.data} point={point} />
         ));
-      setPoints(points);
+      await setPoints(points);
+      setWaiting(false);
     };
+
     getvenueData();
   }, [venueUrl, pointsUrl]);
 
@@ -139,7 +146,8 @@ const SingleFullVenue = ({ match }) => {
     match.params.venueId > 19
   ) {
     throw new Error();
-  }
+  } else if (waiting || !cities) return <Spinner />;
+  console.log(waiting);
 
   return (
     <>
@@ -255,14 +263,17 @@ const SingleFullVenue = ({ match }) => {
               )}
             </div>
           </div>
-          {/* <div className="container-fluid lower-fold profile">
-            <div className="col s12 m5 l4">
-              <h1 className="main-header-text">Owner</h1>
-              <PersonCard />
-            </div>
-          </div> */}
           <div className="col s12">
             <Comment />
+          </div>
+        </div>
+      </div>
+      <div className="container fade-in-delay">
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="col s12 mb-ll">
+              <Cities cities={cities} text="Popular Cities" />
+            </div>
           </div>
         </div>
       </div>
