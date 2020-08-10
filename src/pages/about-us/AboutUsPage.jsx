@@ -20,6 +20,8 @@ const AboutUsPage = () => {
               <div className="mb-m">
                 <blockquote>
                   <p className="flow-text">
+                    Our mission is making happy life for everyone. If you want
+                    to know about us, please find out more. <br />
                     We believe that innovation is born from creative freedom and
                     love for the project. Creating greatness comes from a
                     nurtured soul. Different ideas are born from different

@@ -22,7 +22,7 @@ const RecruitPage = () => {
           <div className="mb-m">
             <blockquote>
               <p className="flow-text">
-                Foe now, we are looking for 6 types of jobs.
+                For now, we are looking for 6 types of jobs.
                 <li> {recruitData[0].role}</li>
                 <li> {recruitData[1].role}</li>
                 <li> {recruitData[2].role}</li>
