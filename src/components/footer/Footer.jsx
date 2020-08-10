@@ -9,6 +9,7 @@ import { selectCurrentUserEmail } from "../../redux/user/userSelector";
 import Login from "../login/Login";
 import SignUp from "../sign-up/SignUp";
 import Logo from "../../assets/logo.png";
+import ShareButton from "../share-button/ShareButton";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -90,29 +91,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright">
         <div className="container">
-          <div
-            className="fb-share-button"
-            data-href="https://s-a-bnb.netlify.app"
-            data-layout="button"
-            data-size="small"
-          >
-            <a
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fs-a-bnb.netlify.app%2F&amp;src=sdkpreparse"
-              className="fb-xfbml-parse-ignore"
-            >
-              <button
-                className="btn-large waves-effect waves-light   blue darken-3"
-                type="submit"
-                name="action"
-                style={{ color: `#fff`, width: `180px`, fontWeight: `500` }}
-              >
-                SHARE&nbsp;&nbsp;<i className="fab fa-facebook"></i>
-              </button>
-            </a>
-          </div>
-
+          <ShareButton />
           <a
             className="grey-text text-lighten-4 right"
             href="https://satoruakiyama.com"
