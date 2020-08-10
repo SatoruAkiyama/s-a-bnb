@@ -42,13 +42,17 @@ const CityVenues = ({ match }) => {
     // eslint-disable-next-line
   }, [url]);
 
-  let city = match.params.cityId;
+  let city;
 
-  if (match.params.cityId === "Kuala%20Lumpur") {
+  if (match.params.cityId === "Kuala Lumpur") {
     city = "KUALALUMPUR";
-  } else if (match.params.cityId === "rio%20de%20janeiro") {
+  } else if (match.params.cityId === "rio de janeiro") {
     city = "RIODEJANEIRO";
+  } else {
+    city = match.params.cityId;
   }
+
+  console.log(match.params.cityId);
 
   if (waiting) {
     return <Spinner />;
