@@ -40,7 +40,7 @@ const App = () => {
   const user = useSelector(selectCurrentUserToken);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="https://s-a-bnb.netlify.app/">
       <ScrollTop>
         <Header />
         <ErrorBoundary>
