@@ -135,7 +135,6 @@ const SingleFullVenue = ({ match }) => {
   ) {
     throw new Error();
   } else if (waiting || !cities) return <Spinner />;
-  console.log(waiting);
 
   return (
     <>
