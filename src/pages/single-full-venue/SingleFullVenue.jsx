@@ -5,7 +5,10 @@ import axios from "axios";
 import moment from "moment";
 import swal from "sweetalert";
 
-import { selectCurrentUserToken } from "../../redux/user/userSelector";
+import {
+  selectCurrentUserToken,
+  selectCurrentUserEmail,
+} from "../../redux/user/userSelector";
 import { modalToggle } from "../../redux/modal/modalActions";
 import { selectCities } from "../../redux/main-data/mainDataSelector";
 import { reserv } from "../../redux/reservation/reservationActions";
@@ -25,6 +28,7 @@ import "./SingleFullVenue.scss";
 const SingleFullVenue = ({ match }) => {
   const currentUserToken = useSelector(selectCurrentUserToken);
   const cities = useSelector(selectCities);
+  const userEmail = useSelector(selectCurrentUserEmail);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -117,6 +121,7 @@ const SingleFullVenue = ({ match }) => {
         token: currentUserToken,
         numberOfGuests,
         currency: "USD",
+        userEmail,
       };
       dispatch(reserv(data));
       history.push(`/checkout/${currentUserToken}`);
