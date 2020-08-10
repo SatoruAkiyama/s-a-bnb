@@ -13,9 +13,6 @@ import "./AccountPage.scss";
 
 const AccountPage = () => {
   const token = useSelector(selectCurrentUserToken);
-  const data = {
-    token,
-  };
 
   const [bookingInfo, setBookingInfo] = useState({
     pastBookinkgs: [],
@@ -24,18 +21,25 @@ const AccountPage = () => {
 
   const { pastBookinkgs, upcomingBookings } = bookingInfo;
 
-  const accountUrl = `${window.apiHost}/users/getBookings`;
-
   useEffect(() => {
     const getAccountData = async () => {
-      const res = await axios.post(accountUrl, data);
-      //   console.log(res.data);
+      const res = await axios
+        .get(
+          `https://fir-a-bnb.firebaseio.com/reservation/${token.slice(
+            0,
+            30
+          )}.json`
+        )
+        .catch((e) => console.log(e.message));
+      console.log(res.data);
+
+      const resArry = Object.keys(res.data).map((fi) => res.data[fi]);
 
       let pastBookinkgs = [];
       let upcomingBookings = [];
 
-      res.data.forEach((booking) => {
-        const today = moment(); //get todays day, so we know what is past booking.
+      resArry.forEach((booking) => {
+        const today = moment();
         const checkOutDate = moment(booking.checkOut);
         const diffDays = checkOutDate.diff(today, "days");
         if (diffDays < 0) {

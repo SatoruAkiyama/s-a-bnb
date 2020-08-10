@@ -11,7 +11,10 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import Spinner from "../../components/spinner/Spinner";
 import Footer from "../../components/footer/Footer";
 
-import { selectCurrentUserToken } from "../../redux/user/userSelector";
+import {
+  selectCurrentUserToken,
+  selectCurrentUserEmail,
+} from "../../redux/user/userSelector";
 
 import { imageUrlChange } from "../../utility/imageUrlChange";
 
@@ -19,43 +22,44 @@ import "./PaymentSuccessPage.scss";
 
 library.add(faLongArrowAltRight);
 
-const PaymentSuccessPage = ({ match }) => {
+const PaymentSuccessPage = () => {
   const [resvData, setResvData] = useState({
     reservationDetails: {},
-    userData: {},
   });
 
-  const { reservationDetails, userData } = resvData;
+  const { reservationDetails } = resvData;
   const venueData = reservationDetails.venueData;
 
   const [waiting, setWaiting] = useState(true);
 
   const token = useSelector(selectCurrentUserToken);
-  const stripeToken = match.params.stripeToken;
-  const paymentData = { stripeToken, token };
-  const successUrl = `${window.apiHost}/payment/success`;
+  const userEmail = useSelector(selectCurrentUserEmail);
 
   useEffect(() => {
     const getResvData = async () => {
-      const res = await axios.post(successUrl, paymentData);
+      const res = await axios
+        .get(
+          `https://fir-a-bnb.firebaseio.com/reservation/${token.slice(
+            0,
+            30
+          )}.json`
+        )
+        .catch((e) => console.log(e.message));
+
+      const resArry = Object.keys(res.data).map((fi) => res.data[fi]);
+
+      const displayData = resArry.slice(-1)[0];
+
       await setResvData({
         ...resvData,
-        reservationDetails: res.data.reservationDetails,
-        userData: res.data.userData,
+        reservationDetails: displayData,
       });
 
       setWaiting(false);
-
-      // sent purchase data to my firestore too
-      await axios
-        .post(`https://fir-a-bnb.firebaseio.com/reservation.json`, res.data)
-        .catch((e) => console.log(e.message));
     };
     getResvData();
     //   eslint-disable-next-line
   }, []);
-
-  // that i get pic from api is broken, so I change pic manually
   if (!!venueData) {
     venueData.imageUrl = imageUrlChange(venueData.id, venueData.imageUrl);
   }
@@ -77,7 +81,7 @@ const PaymentSuccessPage = ({ match }) => {
             Confirmed: {reservationDetails.diffDays} nights in{" "}
             {venueData.location}
             <div className="header-text">
-              <div>Booked by: {userData.email}</div>
+              <div>Booked by: {userEmail}</div>
               <div>{moment().format("MMMM Do, YYYY")}</div>
             </div>
           </div>

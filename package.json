@@ -1,6 +1,5 @@
 {
   "name": "satoru",
-  "homepage": "https://s-a-bnb.netlify.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +19,7 @@
     "react-scripts": "3.4.1",
     "react-share": "^4.2.1",
     "react-slick": "^0.26.1",
+    "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",

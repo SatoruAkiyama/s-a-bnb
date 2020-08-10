@@ -4,7 +4,6 @@ import axios from "axios";
 
 const Comment = ({ match }) => {
   const [comment, setComment] = useState(null);
-  //   const location = useHistory();
   useEffect(() => {
     const getComment = async () => {
       const res = await axios.get(

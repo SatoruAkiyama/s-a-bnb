@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import moment from "moment";
@@ -7,6 +8,7 @@ import swal from "sweetalert";
 import { selectCurrentUserToken } from "../../redux/user/userSelector";
 import { modalToggle } from "../../redux/modal/modalActions";
 import { selectCities } from "../../redux/main-data/mainDataSelector";
+import { reserv } from "../../redux/reservation/reservationActions";
 
 import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
@@ -16,7 +18,6 @@ import PersonCard from "../../components/person-card/PersonCard";
 import Cities from "../../components/cities/Cities";
 import Spinner from "../../components/spinner/Spinner";
 
-import loadScript from "../../utility/loadScript";
 import { imageUrlChange } from "../../utility/imageUrlChange";
 
 import "./SingleFullVenue.scss";
@@ -25,6 +26,7 @@ const SingleFullVenue = ({ match }) => {
   const currentUserToken = useSelector(selectCurrentUserToken);
   const cities = useSelector(selectCities);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [waiting, setWaiting] = useState(true);
   const [venueData, setVenue] = useState({});
@@ -104,14 +106,7 @@ const SingleFullVenue = ({ match }) => {
         icon: "error",
       });
     } else {
-      // diff days is a valid number!
       const totalPrice = pricePerNight * diffDays;
-      const scriptUrl = "https://js.stripe.com/v3";
-      const stripePublicKey =
-        "pk_test_5198HtPL5CfCPYJ3X8TTrO06ChWxotTw6Sm2el4WkYdrfN5Rh7vEuVguXyPrTezvm3ntblRX8TpjAHeMQfHkEpTA600waD2fMrT";
-      await loadScript(scriptUrl);
-      const stripe = window.Stripe(stripePublicKey);
-      const stripeSessionUrl = `${window.apiHost}/payment/create-session`;
       const data = {
         venueData,
         totalPrice,
@@ -123,15 +118,8 @@ const SingleFullVenue = ({ match }) => {
         numberOfGuests,
         currency: "USD",
       };
-
-      const sessionVar = await axios.post(stripeSessionUrl, data);
-      stripe
-        .redirectToCheckout({
-          sessionId: sessionVar.data.id,
-        })
-        .then((result) => {
-          console.log(result);
-        });
+      dispatch(reserv(data));
+      history.push(`/checkout/${currentUserToken}`);
     }
   };
 
@@ -227,16 +215,6 @@ const SingleFullVenue = ({ match }) => {
 
               {currentUserToken ? (
                 <div className="col s12 center">
-                  <span
-                    className="col s12  mb-ss red-text text-accent-3"
-                    style={{ fontSize: `17px` }}
-                  >
-                    *Please use the following test credit card for payments*
-                    <br />
-                    4242 4242 4242 4242
-                    <br />
-                    -Exp: 05/55 - CVV: 555
-                  </span>
                   <button
                     className="btn-large waves-effect waves-light  red accent-3"
                     type="button"

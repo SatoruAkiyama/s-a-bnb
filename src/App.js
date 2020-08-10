@@ -36,11 +36,12 @@ const App = () => {
     import("./pages/recruit-contact/RecruitContactPage")
   );
   const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));
+  const CheckoutPage = lazy(() => import("./pages/checkout/CheckoutPage"));
 
   const user = useSelector(selectCurrentUserToken);
 
   return (
-    <BrowserRouter basename="https://s-a-bnb.netlify.app/">
+    <BrowserRouter>
       <ScrollTop>
         <Header />
         <ErrorBoundary>
@@ -76,6 +77,11 @@ const App = () => {
                   exact
                   path="/search/:searchTerm"
                   component={SearchPage}
+                />
+                <Route
+                  exact
+                  path="/checkout/:checkoutId"
+                  component={CheckoutPage}
                 />
                 <Route
                   path="/account"
