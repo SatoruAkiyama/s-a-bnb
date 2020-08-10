@@ -3,7 +3,7 @@ export const RECRUIT_DATA = {
     link: "backendDeveloper",
     imageUrl:
       "https://cdn.pixabay.com/photo/2018/12/10/02/14/manhattan-3866140_1280.jpg",
-    salary: "$600/ month",
+    salary: "$800/ month",
     location: "New York",
     jobtype: "Full-time",
     experienceLevel: "Senior",
@@ -14,7 +14,7 @@ export const RECRUIT_DATA = {
     link: "frontendDeveloper",
     imageUrl:
       "https://cdn.pixabay.com/photo/2017/07/31/11/31/laptop-2557468_1280.jpg",
-    salary: "$600/ month",
+    salary: "$800/ month",
     location: "New York",
     jobtype: "Full-time",
     experienceLevel: "Senior",
@@ -25,7 +25,7 @@ export const RECRUIT_DATA = {
     link: "dataAnalyst",
     imageUrl:
       "https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg",
-    salary: "$600/ month",
+    salary: "$900/ month",
     location: "New York",
     jobtype: "Full-time",
     experienceLevel: "Senior",
@@ -47,7 +47,7 @@ export const RECRUIT_DATA = {
     link: "manager",
     imageUrl:
       "https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_1280.jpg",
-    salary: "$600/ month",
+    salary: "$700/ month",
     location: "New York",
     jobtype: "Full-time",
     experienceLevel: "Senior",
@@ -58,7 +58,7 @@ export const RECRUIT_DATA = {
     link: "trainigManager",
     imageUrl:
       "https://cdn.pixabay.com/photo/2016/02/19/11/23/women-1209678_1280.jpg",
-    salary: "$600/ month",
+    salary: "$650/ month",
     location: "New York",
     jobtype: "Full-time",
     experienceLevel: "Senior",

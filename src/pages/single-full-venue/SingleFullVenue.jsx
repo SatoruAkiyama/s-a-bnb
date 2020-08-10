@@ -9,6 +9,7 @@ import { modalToggle } from "../../redux/modal/modalActions";
 
 import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
+import Comment from "../../components/comment/Comment";
 import Footer from "../../components/footer/Footer";
 
 import loadScript from "../../utility/loadScript";
@@ -58,7 +59,6 @@ const SingleFullVenue = ({ match }) => {
         ));
       setPoints(points);
     };
-
     getvenueData();
   }, [venueUrl, pointsUrl]);
 
@@ -90,7 +90,7 @@ const SingleFullVenue = ({ match }) => {
         title: "Please make sure your dates are valid",
         icon: "error",
       });
-    } else if (isPast < 1) {
+    } else if (isPast < 0) {
       swal({
         title: "Check in date must be after today.",
         icon: "error",
@@ -236,6 +236,9 @@ const SingleFullVenue = ({ match }) => {
                 </div>
               )}
             </div>
+          </div>
+          <div className="col s12">
+            <Comment />
           </div>
         </div>
       </div>

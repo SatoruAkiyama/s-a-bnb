@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import ToggleMenu from "../toggle-menu/ToggleMenu";
 import HeaderMenu from "../header-menu/HeaderMenu";
+import Logo from "../../assets/logo.png";
 
 import "./Header.scss";
 
@@ -21,7 +22,14 @@ const Header = () => {
       <div className="header__inner">
         <div className="header__logo">
           <Link to="/" onClick={() => setToggle(false)}>
-            S-A-bnb
+            S-A-bnb{" "}
+            <img
+              src={Logo}
+              alt=""
+              width="22px"
+              height="22px"
+              style={{ transform: `translateY(2px)` }}
+            />
           </Link>
         </div>
         <div className="header__nav__pc">

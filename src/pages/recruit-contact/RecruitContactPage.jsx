@@ -16,7 +16,7 @@ const RecruitContactPage = ({ match }) => {
     email: "",
     text: "",
     type: data.role,
-    data: day,
+    date: day,
   });
 
   const { name, email, text } = formData;

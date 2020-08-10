@@ -8,6 +8,7 @@ import { selectCurrentUserEmail } from "../../redux/user/userSelector";
 
 import Login from "../login/Login";
 import SignUp from "../sign-up/SignUp";
+import Logo from "../../assets/logo.png";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,14 @@ const Footer = () => {
           <div className="col l6 s12">
             <h5 className="white-text">
               <Link to="/" style={{ color: `#ff0062` }}>
-                S-A-bnb
+                S-A-bnb{" "}
+                <img
+                  src={Logo}
+                  alt=""
+                  width="30px"
+                  height="30px"
+                  style={{ transform: `translateY(7px)` }}
+                />
               </Link>
             </h5>
             <p className="grey-text text-lighten-4 mb-s">

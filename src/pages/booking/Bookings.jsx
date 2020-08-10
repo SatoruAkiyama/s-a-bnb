@@ -7,6 +7,7 @@ import moment from "moment";
 import { imageUrlChange } from "../../utility/imageUrlChange";
 
 import pic from "../../assets/1.png";
+import BookingCommentForm from "../../components/booking-comment-form/BookingCommentForm";
 
 import "./Booking.scss";
 
@@ -50,7 +51,7 @@ const Bookings = ({ bookings, type, token }) => {
       : "There are not Past Reservation.";
 
   return (
-    <div className="bookings  fade-in">
+    <div className="bookings  fade-in ">
       <h1 className="main-header-text">{title}</h1>
       {bookings.length === 0 ? (
         <div
@@ -95,7 +96,10 @@ const Bookings = ({ bookings, type, token }) => {
           booking.venueData.imageUrl
         );
         return (
-          <div className="booking" key={i}>
+          <div
+            className={`booking ${type === "upcoming" ? "upcoming" : ""}`}
+            key={i}
+          >
             <div className="col s12 m6">
               <div className="card">
                 <div className="card-image">
@@ -135,9 +139,6 @@ const Bookings = ({ bookings, type, token }) => {
                   </div>
                   <div>
                     <span style={{ fontWeight: `500` }}>Actions :</span>{" "}
-                    <div className="booking-detail pointer">
-                      Print Reservation
-                    </div>
                     {type === "upcoming" && booking.status !== "cancelled" ? (
                       <div
                         className="booking-detail pointer"
@@ -148,9 +149,18 @@ const Bookings = ({ bookings, type, token }) => {
                         Cancel Confirmation
                       </div>
                     ) : null}
+                    {type === "past" && booking.status !== "cancelled" ? (
+                      <div className="booking-detail pointer">
+                        <h6>Comment</h6>
+                        <BookingCommentForm booking={booking} />
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-                <div className="card-action center">
+                <div
+                  className="center"
+                  style={{ margin: `5px 0`, paddingBottom: `10px` }}
+                >
                   <Link to={`/venue/${booking.venueData.id}`}>
                     <button
                       className="btn-large waves-effect waves-light  red accent-3"

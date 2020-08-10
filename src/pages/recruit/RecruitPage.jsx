@@ -103,9 +103,9 @@ const RecruitPage = () => {
                             display: `inline-block`,
                           }}
                         >
-                          Role:
+                          Salary:
                         </span>{" "}
-                        <span style={{ marginLeft: `15px` }}>{role}</span>
+                        <span style={{ marginLeft: `15px` }}>{salary}</span>
                       </div>
                       <div className="mb-ss">
                         <span
