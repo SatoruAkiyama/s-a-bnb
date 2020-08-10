@@ -11,6 +11,7 @@ import Points from "../../components/point/Point";
 import SignUp from "../../components/sign-up/SignUp";
 import Comment from "../../components/comment/Comment";
 import Footer from "../../components/footer/Footer";
+import PersonCard from "../../components/person-card/PersonCard";
 
 import loadScript from "../../utility/loadScript";
 import { imageUrlChange } from "../../utility/imageUrlChange";
@@ -127,6 +128,19 @@ const SingleFullVenue = ({ match }) => {
     }
   };
 
+  if (
+    // eslint-disable-next-line
+    match.params.venueId == 1 ||
+    // eslint-disable-next-line
+    match.params.venueId == 2 ||
+    // eslint-disable-next-line
+    match.params.venueId == 16 ||
+    // eslint-disable-next-line
+    match.params.venueId > 19
+  ) {
+    throw new Error();
+  }
+
   return (
     <>
       <div className="row single-full-venue fade-in mb-l">
@@ -148,9 +162,13 @@ const SingleFullVenue = ({ match }) => {
               <div className="divider"></div>
               <div className="detail">{details}</div>
               <br />
-              <div className="amenities">
+              <div className="amenities mb-s">
                 <p>Amenities</p>
                 <span>{amenities}</span>
+              </div>
+              <div className="owner">
+                <p>Owner</p>
+                <PersonCard />
               </div>
             </div>
 
@@ -237,6 +255,12 @@ const SingleFullVenue = ({ match }) => {
               )}
             </div>
           </div>
+          {/* <div className="container-fluid lower-fold profile">
+            <div className="col s12 m5 l4">
+              <h1 className="main-header-text">Owner</h1>
+              <PersonCard />
+            </div>
+          </div> */}
           <div className="col s12">
             <Comment />
           </div>

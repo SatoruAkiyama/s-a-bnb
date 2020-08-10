@@ -36,11 +36,17 @@
     margin: 20px 0 40px;
   }
 
-  & .amenities {
+  & .amenities,
+  & .owner {
     & p {
       font-weight: 500;
       font-size: 24px;
     }
+  }
+
+  & .material-icons {
+    color: $cRed;
+    font-size: 14px;
   }
 
   & .material-icons {
@@ -102,4 +108,29 @@ select {
   display: block;
   border-bottom: 1px solid #000;
   margin-bottom: 15px;
+}
+.profile {
+  & .col {
+    padding: 0 0.3em !important;
+  }
+}
+
+.owner {
+  & .min {
+    display: block;
+  }
+  & .large {
+    display: none;
+  }
+}
+
+@media (min-width: 995px) {
+  .owner {
+    & .min {
+      display: none;
+    }
+    & .large {
+      display: block;
+    }
+  }
 }

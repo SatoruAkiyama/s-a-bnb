@@ -14,12 +14,15 @@ const RecruitContactPage = ({ match }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    text: "",
+    experience: "",
+    about: "",
+    why: "",
+    want: "",
     type: data.role,
     date: day,
   });
 
-  const { name, email, text } = formData;
+  const { name, email, experience, about, why, want } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +47,10 @@ const RecruitContactPage = ({ match }) => {
           ...formData,
           name: "",
           email: "",
-          text: "",
+          experience: "",
+          about: "",
+          why: "",
+          want: "",
         })
       )
       .catch((e) => {
@@ -127,6 +133,10 @@ const RecruitContactPage = ({ match }) => {
               <div className="col s12 m6 l8">
                 <h4 className="flow-text mb-ss right">Application Form</h4>
                 <form onSubmit={handleSubmit}>
+                  {/* experience: '',
+    about: '',
+    why: '',
+    want: '', */}
                   <input
                     name="name"
                     value={name}
@@ -144,10 +154,37 @@ const RecruitContactPage = ({ match }) => {
                     onChange={handleChange}
                   />
                   <textarea
-                    name="text"
-                    value={text}
+                    name="experience"
+                    value={experience}
                     type="text"
-                    placeholder="Subject"
+                    placeholder="Your experience"
+                    required
+                    onChange={handleChange}
+                    className="textarea"
+                  />
+                  <textarea
+                    name="about"
+                    value={about}
+                    type="text"
+                    placeholder="Introduce yourself"
+                    required
+                    onChange={handleChange}
+                    className="textarea"
+                  />
+                  <textarea
+                    name="why"
+                    value={why}
+                    type="text"
+                    placeholder="Why do you want to work here"
+                    required
+                    onChange={handleChange}
+                    className="textarea"
+                  />
+                  <textarea
+                    name="want"
+                    value={want}
+                    type="text"
+                    placeholder="What do you want to do here"
                     required
                     onChange={handleChange}
                     className="textarea"

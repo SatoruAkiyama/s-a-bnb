@@ -5,6 +5,10 @@ export const imageUrlChange = (id, image) => {
     imageUrl =
       "https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
   } // eslint-disable-next-line
+  else if (id == 11) {
+    imageUrl =
+      "https://images.pexels.com/photos/276508/pexels-photo-276508.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  } // eslint-disable-next-line
   else if (id == 12) {
     imageUrl =
       "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
