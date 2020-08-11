@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import axios from "axios";
-import swal from "sweetalert";
 import moment from "moment";
 
 import { imageUrlChange } from "../../utility/imageUrlChange";
@@ -11,34 +9,7 @@ import BookingCommentForm from "../../components/booking-comment-form/BookingCom
 
 import "./Booking.scss";
 
-const Bookings = ({ bookings, type, token }) => {
-  const cancelBooking = async (bid, bvl) => {
-    const cancelReservation = await swal({
-      text: `Are you sure you want to cancel your trip to ${bvl}`,
-      icon: "warning",
-      button: true,
-    });
-    if (cancelReservation) {
-      const url = `${window.apiHost}/reservation/cancel`;
-      const data = {
-        token,
-        bid,
-      };
-      const res = await axios.post(url, data);
-      if (res.data.msg === "cancelled") {
-        swal({
-          title: "Cancelled",
-          icon: "success",
-        });
-      } else {
-        swal({
-          title: "There was a error cancelling",
-          icon: "error",
-        });
-      }
-    }
-  };
-
+const Bookings = ({ bookings, type }) => {
   const location = useLocation();
 
   const title =
@@ -107,14 +78,6 @@ const Bookings = ({ bookings, type, token }) => {
                 </div>
                 <div className="card-content">
                   <div>
-                    <span style={{ fontWeight: `500` }}>Status :</span>{" "}
-                    <div className="booking-detail">
-                      {booking.status === "confirmed" && type === "past"
-                        ? "Completed"
-                        : booking.status}
-                    </div>
-                  </div>
-                  <div>
                     <span style={{ fontWeight: `500` }}>
                       Dates and location :
                     </span>{" "}
@@ -137,26 +100,18 @@ const Bookings = ({ bookings, type, token }) => {
                       {booking.totalPrice} Total
                     </div>
                   </div>
-                  <div>
-                    <span style={{ fontWeight: `500` }}>Actions :</span>{" "}
-                    {type === "upcoming" && booking.status !== "cancelled" ? (
-                      <div
-                        className="booking-detail pointer"
-                        onClick={() =>
-                          cancelBooking(booking.id, booking.venueData.location)
-                        }
-                      >
-                        Cancel Confirmation
-                      </div>
-                    ) : null}
-                    {type === "past" && booking.status !== "cancelled" ? (
+
+                  {type === "past" && booking.status !== "cancelled" ? (
+                    <div>
+                      <span style={{ fontWeight: `500` }}>Actions :</span>{" "}
                       <div className="booking-detail pointer">
                         <h6>Comment</h6>
                         <BookingCommentForm booking={booking} />
                       </div>
-                    ) : null}
-                  </div>
+                    </div>
+                  ) : null}
                 </div>
+
                 <div
                   className="center"
                   style={{ margin: `5px 0`, paddingBottom: `10px` }}
