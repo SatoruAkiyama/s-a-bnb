@@ -40,6 +40,11 @@ const Footer = () => {
           <div className="col l4 offset-l2 s12">
             <ul>
               <li className="mb-s">
+                <Link className="grey-text text-lighten-3" to="/">
+                  Top
+                </Link>
+              </li>
+              <li className="mb-s">
                 <Link className="grey-text text-lighten-3" to="/about-us">
                   About us
                 </Link>

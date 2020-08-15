@@ -19,6 +19,11 @@ const MenuItem = ({ toggleMenu }) => {
   return (
     <ul className="menu-items">
       <li className="menu-item">
+        <NavLink exact to="/" onClick={toggleMenu}>
+          Top
+        </NavLink>
+      </li>
+      <li className="menu-item">
         <NavLink exact to="/about-us" onClick={toggleMenu}>
           About us
         </NavLink>
