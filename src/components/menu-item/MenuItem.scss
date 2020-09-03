@@ -41,6 +41,10 @@ ul {
   }
 }
 
+.menu-item {
+  cursor: pointer;
+}
+
 @media (min-width: 960px) {
   .menu-item:last-child,
   .menu-item:nth-child(3) {
