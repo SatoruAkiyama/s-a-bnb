@@ -11,4 +11,4 @@ Live site(https://s-a-bnb.netlify.app/)
 
 # Author
 
-Satoru Akiyama
+Satoru Akiyama(https://satoruakiyama.com)
