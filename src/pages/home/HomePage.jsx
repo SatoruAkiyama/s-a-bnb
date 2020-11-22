@@ -123,46 +123,6 @@ const HomePage = () => {
                 </div>
               </div>
             ))}
-            {/* <div className="col s12 m6">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="https://images.pexels.com/photos/1612351/pexels-photo-1612351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                    alt=""
-                  />
-                </div>
-                <div class="card-content">
-                  <p>
-                    I am a very simple card. I am good at containing small bits
-                    of information. I am convenient because I require little
-                    markup to use effectively.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <Link to="/about-us">About us</Link>
-                </div>
-              </div>
-            </div>
-            <div className="col s12 m6">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="https://images.pexels.com/photos/3184430/pexels-photo-3184430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                    alt=""
-                  />
-                </div>
-                <div class="card-content">
-                  <p>
-                    I am a very simple card. I am good at containing small bits
-                    of information. I am convenient because I require little
-                    markup to use effectively.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <Link to="/about-us">Recruit</Link>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

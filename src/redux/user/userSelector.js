@@ -14,5 +14,5 @@ export const selectCurrentUserEmail = createSelector(
 
 export const selectCurrentUserToken = createSelector(
   [selectCurrentUser],
-  (currentUser) => currentUser.token
+  (currentUser) => (currentUser ? currentUser.token : null)
 );
